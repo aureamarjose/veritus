@@ -1,0 +1,23 @@
+<% if @categories_accounts_payables.empty? %>
+  <p class="mt-8 font-medium text-gray-900 whitespace-nowrap dark:text-white" >Não há serviços cadastrados.</p>
+<% else %>
+  <div id="categories_accounts_payables">
+    <!-- Tabela para type_account_id: 1 -->
+    <h2 class="font-bold text-2xl mt-8">Custo Fixo</h2>
+    <div class="mt-4 relative overflow-x-auto shadow-md sm:rounded-lg">
+      <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+            <th scope="col" class="px-6 py-3">Descrição</th>
+            <th scope="col" class="px-6 py-3 text-right">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @categories_accounts_payables.select { |cap| cap.type_account_id == 1 }.each do |categories_accounts_payable| %>
+            <%= render partial: 'categories_accounts_payables/categories_accounts_payable', locals: { categories_accounts_payable: categories_accounts_payable } %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<%end%>

@@ -1,0 +1,7 @@
+<%= turbo_stream.replace "add_payment_modal_#{dom_id(@bills_to_pay)}" do %>    
+    <%= render partial: 'bills_to_pays/modal_payment', locals: {bills_to_pay: @bills_to_pay} %>
+<% end %>
+
+<%= turbo_stream.update :flash_messages do %>
+    <%= render 'layouts/flash_messages'%>
+<% end %>

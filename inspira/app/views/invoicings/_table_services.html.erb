@@ -1,0 +1,67 @@
+<div data-turbo-permanent class="w-full mt-8 relative overflow-x-auto shadow-md sm:rounded-lg">
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400" >
+    <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <tr>
+        <th scope="col" class="px-6 py-3">Serviço</th>
+        <th scope="col" class="px-6 py-3 text-center">Quantidade</th>
+        <th scope="col" class="px-6 py-3 text-center">Valor Bruto</th>
+        <th scope="col" class="px-6 py-3 text-center">Média do Valor</th>
+        <th scope="col" class="px-6 py-3 text-center">Custo Operacional</th>
+        <th scope="col" class="px-6 py-3 text-center">Valor Líquido</th>
+        <th scope="col" class="px-6 py-3 text-center">Percentual</th>
+      </tr>
+    </thead>
+
+    <tbody >
+      <% @services.each do |service| %>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <%= service.service_name %>
+          </th>
+          <td class="text-center px-6 py-4">
+            <%= service.service_count %>
+          </td>
+          <td class="text-center px-6 py-4">
+            <%= number_to_currency(service.total_sum, precision: 2, separator: ",", delimiter: ".") %>
+          </td>
+          <td class="text-center px-6 py-4">
+            <%= number_to_currency(service.total_sum / service.service_count, precision: 2, separator: ",", delimiter: ".") %>
+          </td>
+          <td class="text-center px-6 py-4">
+            <%=number_to_currency(service.operational_cost, precision: 2, separator: ",", delimiter: ".") %>
+          </td>
+          <td class="text-center px-6 py-4">
+            <%=number_to_currency(service.net_value, precision: 2, separator: ",", delimiter: ".") %>
+          </td>
+          <td class="text-center px-6 py-4">
+            <%=number_to_percentage(service.percentage_of_total, precision: 2, separator: ",", delimiter: ".") %>
+          </td>
+        </tr>
+      <% end %>
+      <tr class="bg-gray-200 font-bold">
+        <th scope="row" class="px-6 py-4 text-gray-900 whitespace-nowrap">
+          Total
+        </th>
+        <td class="text-center px-6 py-4">
+          <%= @total_service_count %>
+        </td>
+        <td class="text-center px-6 py-4">
+          <%= number_to_currency(@total_sum, separator: ",", delimiter: ".") %>
+        </td>
+        <td class="text-center px-6 py-4">
+          <%= @total_sum.zero? ? 'R$ 0,00' : number_to_currency(@total_sum / @total_service_count, precision: 2, separator: ",", delimiter: ".") %>
+        </td>
+        <td class="text-center px-6 py-4">
+          <%= number_to_currency(@total_operational_cost, precision: 2, separator: ",", delimiter: ".") %>
+        </td>
+        <td class="text-center px-6 py-4">
+          <%= number_to_currency(@total_net_value, precision: 2, separator: ",", delimiter: ".") %>
+        </td>
+        <td class="text-center px-6 py-4">
+          100%
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>

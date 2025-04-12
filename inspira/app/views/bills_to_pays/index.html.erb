@@ -1,0 +1,38 @@
+<div class="m-10 mt-5 sm:pt-28 md:pt-28 sm:ms-72 sm:me-8"
+  data-controller="messages--confirm">
+
+  <% if @bills_to_pays.present? %>
+    <%=render "messages/confirm"%>
+  <% end %>
+  <%=render "bills_to_pays/modal_filter"%>
+  <h1 class="pb-3 border-b-4 text-4xl font-extrabold dark:text-white">
+    <div class="flex">
+      <svg class="mt-2 w-8 h-8 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+        <path fill-rule="evenodd" d="M7 6a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-2v-4a3 3 0 0 0-3-3H7V6Z" clip-rule="evenodd"/>
+        <path fill-rule="evenodd" d="M2 11a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-7Zm7.5 1a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Z" clip-rule="evenodd"/>
+        <path d="M10.5 14.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/>
+      </svg>
+
+      <span class="ms-3">Contas à Pagar</span>
+    </div>
+  </h1>
+
+  <div class="mt-8 grid grid-cols-1">
+    <div class="flex ">
+      <% if @logger %>
+        <%= link_to new_admins_backoffice_bills_to_pay_path, data: {turbo_stream: true}, class: "h-10 w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" do %>
+          Cadastrar conta
+        <% end %>
+      <%else%>
+        <%= link_to new_admins_backoffice_bills_to_pay_path, data: {turbo_stream: true}, class: "w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" do %>
+          Cadastrar conta
+        <% end %>
+      <% end %>
+      <div class="">
+        <%=render "bills_to_pays/dropdown_index"%>
+      </div>
+    </div>
+  </div>
+  <%=render "bills_to_pays/index_partial"%>
+</div>
+

@@ -1,0 +1,5 @@
+<%#turbo_stream.remove "remove_payment_#{dom_id(@bills_to_pay)}" %>
+
+<%= turbo_stream.update :flash_messages do %>
+    <%= render 'layouts/flash_messages'%>
+<% end %>

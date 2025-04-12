@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyString
+  expiration_date: 2024-08-07
+  value: MyString
+  status: MyString
+  deleted: false
+
+two:
+  description: MyString
+  expiration_date: 2024-08-07
+  value: MyString
+  status: MyString
+  deleted: false

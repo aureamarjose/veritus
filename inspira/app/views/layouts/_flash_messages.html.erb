@@ -1,0 +1,21 @@
+ <% if notice %>  
+    <script>
+    Toastify({
+    text: "<%= notice %>",
+    duration: 5000,
+    style: {
+        background: "#22c55e",}
+    }).showToast();
+    </script>    
+<% end %>
+
+<% if alert %>
+    <script>
+    Toastify({
+    text: "<%= alert %>",
+    duration: 5000,
+    style: {
+        background: "#dc2626",}
+    }).showToast();
+    </script>  
+<% end %>

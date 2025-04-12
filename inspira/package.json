@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "chart.js": "^4.4.3",
+    "flowbite": "^2.3.0",
+    "stimulus": "2.0.0",
+    "stimulus-use": "^0.52.2"
+  }
+}

@@ -1,0 +1,127 @@
+<div class="mt-8">
+  <%= form_with(model: @logger == true ? [:admins_backoffice, service] : [:users_backoffice, service], data: { controller: "prevent", action: "keydown->prevent#preventEnter"}, class: "contents") do |form| %>
+
+    <% if service.errors.any?  %>
+      <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+        <svg class="flex-shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+        </svg>
+        <span class="sr-only">Danger</span>
+        <div>
+          <span class="font-medium"><%= t('errors.template.header', model: service.model_name.human, count: @service.errors.count) %></span>
+          <ul class="mt-1.5 list-disc list-inside">
+            <% service.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-4 pb-3 border-b-2 dark:text-white"></div>
+    <% end %>
+
+    <div data-controller="services--nav" data-turbo-permanent>
+      <div class="mt-8 text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
+        <ul class="flex flex-wrap -mb-px">
+          <li class="me-2">
+            <%= link_to "", id:"link1", data: {turbo_stream: true, action:"services--nav#showForm", "services--nav-target":"link"}, class: "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" do %>
+            Dados Gerais |
+            <% end %>
+
+          </li>
+          <li class="me-2">
+            <%= link_to "", id:"link2", data: {turbo_stream: true, action:"services--nav#showForm", "services--nav-target":"link"}, class: "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" do %>
+            Beneficiário |
+            <% end %>
+          </li>
+          <li class="me-2">
+            <%= link_to "", id:"link3", data: {turbo_stream: true, action:"services--nav#showForm", "services--nav-target":"link"}, class: "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" do %>
+            Serviços |
+            <% end %>
+          </li>
+          <li class="me-2">
+            <%= link_to "", id:"link4", data: {turbo_stream: true, action:"services--nav#showForm", "services--nav-target":"link"}, class: "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" do %>
+            Custos Adcionais |
+            <% end %>
+          </li>
+          <li class="me-2">
+            <%= link_to "", id:"link5", data: {turbo_stream: true, action:"services--nav#showForm", "services--nav-target":"link"}, class: "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" do %>
+            Custos Operacionais |
+            <% end %>
+          </li>
+          <li class="me-2">
+            <%= link_to "", id:"link6", data: {turbo_stream: true, action:"services--nav#showForm", "services--nav-target":"link"}, class: "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" do %>
+            Recebimentos |
+            <% end %>
+          </li>
+          <li class="me-2">
+            <%= link_to "", id:"link7", data: {turbo_stream: true, action:"services--nav#showForm", "services--nav-target":"link"}, class: "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" do %>
+            Detalhes
+            <% end %>
+          </li>
+        </ul>
+      </div>
+
+      <div data-services--nav-target="form1" class="mt-8 hidden">
+        <%= render partial: "services/form_1", locals: { form: form } %>
+      </div>
+
+      <div data-services--nav-target="form2" class="mt-8 hidden">
+        <%= render partial: "services/form_2", locals: { form: form } %>
+      </div>
+
+      <div data-controller="services--services" id="serviceTotal"
+        data-services--services-services--results-outlet="#serviceCalc">
+
+        <div data-controller="services--additionalCharge" id="totalCost"
+          data-services--additionalCharge-services--results-outlet="#serviceCalc">
+
+          <div data-controller="services--operationalCost">
+            <div data-controller="services--received" id="totalReceived"
+              data-services--received-services--results-outlet="#serviceCalc" >
+
+              <div data-services--nav-target="form3" class="mt-8 hidden">
+                <%= render partial: "services/form_3", locals: { form: form } %>
+              </div>
+
+              <div data-services--nav-target="form4" class="mt-7 hidden">
+                <%= render partial: "services/form_4", locals: { form: form } %>
+              </div>
+
+              <div data-services--nav-target="form5" class="mt-7 hidden">
+                <%= render partial: "services/form_5", locals: { form: form } %>
+              </div>
+
+              <div data-services--nav-target="form6" class="mt-7 hidden">
+                <%= render partial: "services/form_6", locals: { form: form } %>
+              </div>
+
+              <div data-services--nav-target="form7" class="mt-7 hidden">
+                <%= render partial: "services/form_7", locals: { form: form } %>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="mt-8 border-b-2">
+
+    <div class="mt-8 grid grid-cols-2 w-64 gap-4">
+      <%= form.submit class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+
+      <% if @logger %>
+        <%= link_to "Voltar", admins_backoffice_services_path, data: {turbo_stream: true}, class: "w-full text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+      <% else %>
+        <%= link_to "Voltar", users_backoffice_services_path, data: {turbo_stream: true}, class: "w-full text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+
+
+
+
+
+

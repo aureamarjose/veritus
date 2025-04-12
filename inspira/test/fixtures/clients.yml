@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name_client: MyString
+  legal_situation: MyString
+  number_doc: MyString
+
+two:
+  name_client: MyString
+  legal_situation: MyString
+  number_doc: MyString

@@ -1,0 +1,57 @@
+ <% if cash_flow.source_model == "cash_flow" %>
+    <%=render "messages/confirm"%>
+  <% end %>
+
+<td class="flex px-4 py-4 gap-3">
+  <%= I18n.l(cash_flow.lauch_date, format: :default) %>
+</td>
+<td class="px-6 py-4 text-center">
+  <% if cash_flow.bills_to_pays.any? %>
+    <p>Contas à pagar</p>
+  <% elsif cash_flow.receiveds.any? %>
+    <p>Recebimentos</p>
+    <% cash_flow.receiveds.each do |received| %>
+      <p>Serviço Pasta: <%= received.service.folder %> </p>
+    <% end %>
+  <% elsif cash_flow.operational_costs.any? %>
+    Custos operacionais
+    <% cash_flow.operational_costs.each do |operational_cost| %>
+      <p>Serviço Pasta: <%= operational_cost.service.folder %> </p>
+    <% end %>
+  <% elsif cash_flow.additional_charges.any? %>
+    Custos adicionais
+    <% cash_flow.additional_charges.each do |additional_charge| %>
+      <p>Serviço Pasta: <%= additional_charge.service.folder %> </p>
+    <% end %>
+  <% elsif cash_flow.source_model == "cash_flow" %>
+    Saldo adcionado
+  <% end %>
+</td>
+<td class="px-6 py-4 text-center"><%= cash_flow.lauch_description %> <br>
+  <% cash_flow.bills_to_pays.each do |bill| %>
+    <p>Categoria: <%= bill.categories_accounts_payable.formatted_name %> </p>
+  <% end %>
+</td>
+<td class="px-6 py-4 text-center"><%= cash_flow.lauch_type %></td>
+<td class="px-6 py-4 text-center">
+  <% if cash_flow.lauch_type == "Entrada" %>
+    <p class="text-sm font-semibold text-blue-500 dark:text-white"><%= number_to_currency(cash_flow.lauch_value, unit: "R$ ", separator: ",", delimiter: ".") %></p>
+  <%else%>
+    <p class="text-sm font-semibold text-red-500 dark:text-white"><%= number_to_currency(cash_flow.lauch_value, unit: "R$ ", separator: ",", delimiter: ".") %></p>
+  <%end%>
+</td>
+  <td class="flex justify-center px-6 py-4 gap-3">
+  <% if cash_flow.lauch_type == "Entrada" %>
+    <div>
+      <p class="text-sm font-semibold text-gray-900 dark:text-white"><%= number_to_currency(cash_flow.balance, unit: "R$ ", separator: ",", delimiter: ".") %>
+    </div>
+    <% if cash_flow.source_model == "cash_flow" %>
+      <%= render partial: "cash_flows/button_delete", locals: {cash_flow: cash_flow} %>
+    <% end %>
+    </p>
+  <%else%>
+    <p class="text-sm font-semibold text-gray-900 dark:text-white"><%= number_to_currency(cash_flow.balance, unit: "R$ ", separator: ",", delimiter: ".") %>
+    </p>
+  <%end%>
+</td>
+

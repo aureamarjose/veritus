@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render 'clients/client', client: @client %>
+
+<div>
+  <%= @logger %>
+  <%= @logger == true ? link_to("Edit the client adm", edit_admins_backoffice_client_path(@client)) : link_to("Edit th client", edit_users_backoffice_client_path(@client)) %> |
+
+  <%= @logger == true ? link_to("Back to clients adm", admins_backoffice_clients_path) : link_to("Back to clients", users_backoffice_clients_path) %>  
+
+  <%= @logger == true ? button_to("Destroy th client adm", [:admins_backoffice, @client], method: :delete) : button_to("Destroy this client", [:users_backoffice, @client], method: :delete) %>
+</div>

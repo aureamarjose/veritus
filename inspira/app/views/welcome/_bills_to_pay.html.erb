@@ -1,0 +1,40 @@
+<% if @bills_with_due_info.empty? %>
+  <p class="mt-8 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center" >Não há dados para exibir.</p>
+<% else %>
+  <div id="clients">
+    <div  class="h-92 border relative overflow-x-auto shadow-md sm:rounded-lg">
+      <h1 class="border-b bg-gray-50 dark:bg-gray-700 text-center text-xl font-bold text-gray-900 dark:text-white">Contas à pagar</h1>
+      <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400" >
+        <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+            <th scope="col" class="px-6 py-3"> Descrição</th>
+            <th scope="col" class="px-6 py-3 text-center">Data de vencimento</th>
+            <th scope="col" class="px-6 py-3 text-center">Dias para vencimento</th>
+            <th scope="col" class="px-6 py-3 text-center">Valor</th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @bills_with_due_info.each do |bills_to_pay| %>
+            <tr id="bills_to_pay_<%= bills_to_pay["id"] %>" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+              <td class="px-6 py-4"><%= bills_to_pay["description"] %></td>
+              <td class="px-6 py-4 text-center"><%= I18n.l(bills_to_pay["expiration_date"], format: :default) %></td>
+              <td class="px-6 py-4 text-center"><%=  bills_to_pay["expiration"] %></td>
+              <td class="px-6 py-4 text-center"><%= number_to_currency(bills_to_pay["value"]) %></td>
+            </tr>
+          <% end %>
+          <tr class="bg-gray-200 font-bold">
+            <th scope="row" class="px-6 py-4 text-gray-900 whitespace-nowrap">
+              Total de contas à pagar
+            </th>
+            <td colspan="3" class="text-right px-6 py-4">
+              <%= number_to_currency(@total_payable) %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+<% end %>

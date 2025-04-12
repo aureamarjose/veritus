@@ -1,0 +1,18 @@
+<div class="mx-auto md:w-2/3 w-full flex">
+  <div class="mx-auto">
+    <% if notice.present? %>
+      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <% end %>
+
+    <%= render 'services/service', service: @service %>
+
+    <%= @logger == true ? link_to("Edit the client adm", edit_admins_backoffice_service_path(@service)) : link_to("Edit th client", edit_users_backoffice_service_path(@service)) %> |
+
+    <%= @logger == true ? link_to("Back to clients adm", admins_backoffice_services_path) : link_to("Back to clients", users_backoffice_services_path) %>
+
+     <%= @logger == true ? button_to("Destroy th client adm", [:admins_backoffice, @service], method: :delete) : button_to("Destroy this client", [:users_backoffice, @service], method: :delete) %>   
+    
+      
+    </div>
+  </div>
+</div>

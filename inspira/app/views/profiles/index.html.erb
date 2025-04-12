@@ -1,0 +1,30 @@
+<div class="m-5 mt-32 md:mx-20" ">
+
+  <h1 class="pb-3 border-b-4 text-4xl font-extrabold dark:text-white">
+    <div class="flex">
+      <svg class="MT-2 w-10 h-10 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+        <path fill-rule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clip-rule="evenodd"/>
+      </svg>
+      <span class="ms-3">Perfil</span>
+    </div>
+  </h1>
+
+  <div class="mt-8">
+    <p class="block text-md font-medium text-gray-900 dark:text-white">
+      <strong>Nome:</strong>
+      <%= current_admin.name %>
+    </p>
+    <p class="block mt-2 text-md font-medium text-gray-900 dark:text-white">
+      <strong>E-mail:</strong>
+      <%= current_admin.email %>
+    </p>
+  </div>
+
+  <div class="mt-7 grid grid-cols-2 sm:w-full lg:w-96 gap-4">
+    <%= link_to "Alterar Senha", edit_password_admins_backoffice_profiles_path, data: {turbo_stream: true}, class: "w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+  </div>
+  <div class="mt-4 grid grid-cols-2 sm:w-full lg:w-96  gap-4">
+    <%= link_to "Editar Perfil", edit_profile_admins_backoffice_profiles_path, data: {turbo_stream: true}, class: "w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+  </div>
+
+</div>

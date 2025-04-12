@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  service_date: 2024-06-20
+  amount: 1
+  value: MyString
+  total: MyString
+  service: one
+
+two:
+  service_date: 2024-06-20
+  amount: 1
+  value: MyString
+  total: MyString
+  service: two

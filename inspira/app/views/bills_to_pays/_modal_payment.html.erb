@@ -1,0 +1,74 @@
+<!-- Main modal -->
+
+<div id=<%=dom_id(bills_to_pay, :crud_modal)%> tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+  <div class="relative p-4 w-full max-w-md max-h-full">
+    <!-- Modal content -->
+    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+      <!-- Modal header -->
+      <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+          Realizar baixa
+        </h3>
+        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle=<%=dom_id(bills_to_pay, :crud_modal)%>>
+          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+          </svg>
+          <span class="sr-only">Close modal</span>
+        </button>
+      </div>
+      <!-- Modal body -->
+      <div class="p-4">
+        <%=content_tag(:div, id: "add_payment_#{dom_id(bills_to_pay)}") do %>
+          <%= form_with(model: bills_to_pay, url: save_payment_admins_backoffice_cash_register_path(bills_to_pay), method: :patch, class: "contents") do |form| %>
+
+            <%=render partial:"bills_to_pays/message_error", locals:{bills_to_pay: bills_to_pay}%>
+
+            <div class="grid gap-6 mb-6 lg:grid-cols-1">
+              <p class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                <strong>Categoria:</strong>
+                <%= bills_to_pay.categories_accounts_payable.name %>
+              </p>
+
+              <p class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                <strong>Descrição:</strong>
+                <%= bills_to_pay.description %>
+              </p>
+
+              <p class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                <strong>Data de Vencimento:</strong>
+                <%= bills_to_pay.expiration_date ? I18n.l(bills_to_pay.expiration_date, format: :default) : "-"%>
+              </p class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+
+              <p class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                <strong>Valor à Pagar:</strong>
+                <%=  number_to_currency(bills_to_pay.value, unit: "R$ ", separator: ",", delimiter: ".") %>
+              </p>
+            </div>
+
+            <div class="grid gap-6 mb-6 lg:grid-cols-2">
+              <div data-controller="flatpickr">
+                <%= form.label :pay_day, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+                <%= form.date_field :pay_day, data:{"flatpickr-target":"inputDate"}, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", autocomplete: "off" %>
+              </div>
+              <div>
+                <%= form.label :value, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+                <%= form.text_field :value, value: number_to_currency(bills_to_pay.value, unit: "R$", separator: ",", delimiter: "."), data:{controller: "formatCurrency", action:"formatCurrency#formatValue", "formatCurrency-target":"inputValue"}, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+              </div>
+
+              <div>
+                  <%= form.hidden_field :status, value: true %>
+              </div>
+
+            </div>
+
+            <hr class="mt-8 border-b-2">
+
+            <div class="mt-8 grid grid-cols-1 w-full gap-4">
+              <%= form.submit "Pagar", data: { modal_toggle: dom_id(bills_to_pay, :crud_modal)}, class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+            </div>
+          <% end %>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>

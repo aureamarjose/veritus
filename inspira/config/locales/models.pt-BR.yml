@@ -1,0 +1,128 @@
+'pt-BR':
+  activerecord:
+    models:
+      admin:
+        one: Administrador
+        other: Administradores
+      user:
+        one: Usuário
+        other: Usuários
+      client:
+        one: Cliente
+        other: Clientes
+      phones:
+        one: Telefone
+        other: Telefones
+      emails:
+        one: E-mail
+        other: E-mails
+      address:
+        one: Endereço
+        other: Endereços
+      addresses:
+        one: Endereço
+        other: Endereços
+      service:
+        one: Serviço
+        other: Serviços
+      bills_to_pay:
+        one: Conta a Pagar
+        other: Contas a Pagar
+      categories_accounts_payable:
+        one: Categoria de Conta a Pagar
+        other: Categorias de Contas a Pagar
+      cash_flow:
+        one: Fluxo de Caixa
+        other: Fluxos de Caixa
+      list_service:
+        one: Lista de Serviços
+        other: Listas de Serviços
+      receiveds:
+        one: Recebido
+        other: Recebidos
+
+    attributes:
+      admin:
+        name: "Nome"
+        email: "E-mail"
+        password: "Senha"
+        password_confirmation: "Confirmação de Senha"
+        characters minimum: "Mínimo de 6 caracteres"
+        remember_me: "Lembrar-me"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+        current_password: "Senha Atual"
+      user:
+        name: "Nome"
+        email: "E-mail"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+      # will translate User attribute "login" as "Handle"
+      client:
+        name_client: "Nome do Cliente"
+        legal_situation: "Pessoa Físisca ou Jurídica"
+        number_doc: "CPF ou CNPJ"
+        addresses: "Endereços"
+        phones: "Telefones"
+        emails: "E-mails"
+      phone:
+        phone: "Telefone"
+      phones:
+        phone: "Telefone"
+      emails:
+        email: "E-mail"
+      email:
+        email: "E-mail"
+      address:
+        address: "Endereço"
+        street: "Logradouro"
+        add_number: "Número"
+        complement: "Complemento"
+        neighborhood: "Bairro"
+        city: "Cidade"
+        uf: "UF"
+        cep: "CEP"
+      addresses:
+        addresses: "Endereços"
+        street: "Logradouro"
+        add_number: "Número"
+        complement: "Complemento"
+        neighborhood: "Bairro"
+        city: "Cidade"
+        uf: "UF"
+        cep: "CEP"
+      service:
+        folder: "Pasta"
+        sector: "Setor"
+        start_date: "Data de Início"
+        end_date: "Data de Término"
+        financial_situation: "Situação Financeira"
+        progress: "Progresso"
+        description: "Descrição"
+        client: "Contratante"
+        exc_client2: "Beneficiário"
+        address: "Local de Execução"
+      bills_to_pay:
+        description: "Descrição"
+        expiration_date: "Data de vencimento"
+        value: "Valor"
+        pay_day: "Data de Pagamento"
+        status: "Situação do Pagamento"
+        category_id: "Categoria"
+      categories_accounts_payable:
+        type_account_id: "Tipo de Conta"
+        type_of_account: "Tipo de Conta"
+        name: "Nome"
+      cash_flow:
+        lauch_date: "Data de Lançamento"
+        lauch_value: "Valor do Lançamento"
+        lauch_description: "Descrição do Lançamento"
+      list_service:
+        service_name: "Nome do Serviço"
+      receiveds:
+        lauch_date: "Data de recebimento"
+        lauch_value: "Valor recebido"
+        release_description: "Descrição do recebimento"
+
+
+

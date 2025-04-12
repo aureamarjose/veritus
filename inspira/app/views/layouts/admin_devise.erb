@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AJ Systems Developemnt</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+  </head>
+
+  <body >
+    <div class="flex flex-col justify-center  items-center h-screen bg-gradient-to-tl from-blue-300 to-blue-900">
+      <div class="flex-1">
+        <%= render "admins/shared/error_messages", resource: resource %>
+        <%= render "messages/alert"%>
+      </div>
+      <div class="flex-grow">
+        <%= yield %>
+      </div>
+
+    </div>
+
+  </body>
+</html>

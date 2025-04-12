@@ -1,0 +1,17 @@
+<h1 class="text-center pb-3 border-b-4 text-4xl font-extrabold dark:text-white"><%="Serviços Excutados no Ano #{@year}"%></h1>
+<%= render "invoicings/table_services"%>
+
+<hr class="mt-8 border-b-4">
+
+<div class=" mt-8 w-full border relative overflow-x-auto shadow-md sm:rounded-lg ">
+    <%= pie_chart @service_data_for_chart,
+      thousands: ".",
+      decimal: ",",
+      round: 2,
+      zeros: true,
+      suffix: " %",
+      title: "Composição dos Serviços",
+      height: "500px",
+      empty: "Não há dados para exibir"
+    %>
+  </div>

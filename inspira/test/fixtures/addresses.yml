@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  neighborhood: MyString
+  street: MyString
+  city: MyString
+  cep: MyString
+  uf: MyString
+  complement: MyString
+  client: one
+
+two:
+  neighborhood: MyString
+  street: MyString
+  city: MyString
+  cep: MyString
+  uf: MyString
+  complement: MyString
+  client: two

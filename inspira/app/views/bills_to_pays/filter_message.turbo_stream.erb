@@ -1,0 +1,7 @@
+<%= turbo_stream.replace :results_account do %>
+  <%= render 'bills_to_pays/index_partial'%>
+<%end%>
+
+<%= turbo_stream.update :flash_messages do %>
+  <%= render 'layouts/flash_messages'%>
+<% end %>

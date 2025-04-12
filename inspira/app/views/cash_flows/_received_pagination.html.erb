@@ -1,0 +1,30 @@
+<div class="mt-8 text-center">
+    <nav aria-label="Page navigation example">
+      <ul class="inline-flex -space-x-px text-sm">
+
+        <% unless @cash_flows.first_page? %>
+          <li>
+            <%= link_to 'Anterior', url_for(page: @cash_flows.prev_page, filter: params[:filter], date: params[:date], search: params[:search]), data: {turbo_frame: "result_received", turbo_action:"advance"}, class: 'flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white' %>
+          </li>
+        <% end %>
+
+        <% (@cash_flows.current_page - 1..@cash_flows.current_page + 1).each do |page| %>
+          <% if page > 0 && page <= @cash_flows.total_pages %>
+            <li>
+              <% if @cash_flows.current_page == page %>
+                <%= content_tag :a, page, href: url_for(page: page, filter: params[:filter], date: params[:date], search: params[:search]), data: {turbo_frame: "result_received", turbo_action:"advance"},  class: 'flex items-center justify-center px-3 h-8 leading-tight text-blue-600 bg-blue-50 border border-gray-300 hover:bg-blue-100 hover:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white', 'aria-current': 'page' %>
+              <% else %>
+                <%= link_to page,  url_for(page: page, filter: params[:filter], date: params[:date], search: params[:search]), data: {turbo_frame: "result_received", turbo_action:"advance"}, class: 'flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white' %>
+              <% end %>
+            </li>
+          <% end %>
+        <% end %>
+
+        <% unless @cash_flows.last_page? %>
+          <li>
+            <%= link_to 'Próximo',  url_for(page: @cash_flows.next_page, filter: params[:filter], date: params[:date], search: params[:search]), data: {turbo_frame: "result_received", turbo_action:"advance"}, class: 'flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white' %>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>

@@ -1,0 +1,52 @@
+services:
+  web:
+    image: nginx
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile
+    depends_on:
+      - app
+    ports:
+      - "80:80"
+    networks:
+      - inspira-network
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+      MYSQL_DATABASE: ${DATABASE_NAME}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - inspira-network
+  app:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -b '0.0.0.0'"
+    volumes:
+      - ./inspira:/inspira
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      - RAILS_ENV=${RAILS_ENV}
+      - RAILS_SERVE_STATIC_FILES=true
+      - DATABASE_USERNAME=${DATABASE_USERNAME}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - DATABASE_HOST=${DATABASE_HOST}
+      - DATABASE_PORT=${DATABASE_PORT}
+      - SECRET_KEY_BASE=${SECRET_KEY_BASE}
+    networks:
+      - inspira-network
+
+volumes:
+  mysql_data:
+
+
+networks:
+  inspira-network:
+    driver: bridge

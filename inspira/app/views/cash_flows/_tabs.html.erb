@@ -1,0 +1,33 @@
+<div data-controller="cashFlow--tabs" >
+  <div class="mt-8 text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
+    <ul class="flex flex-wrap -mb-px">
+      <li class="me-2">
+        <%= link_to admins_backoffice_cash_flows_path, id:"link1", data: {turbo_stream: true, action:"cashFlow--tabs#showForm", "cashFlow--tabs-target":"link", turbo_action:"advance"}, class: "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" do %>
+        Todos os Registros |
+        <% end %>
+
+      </li>
+      <li class="me-2">
+        <%= link_to received_admins_backoffice_cash_flows_path, id:"link2", data: {turbo_stream: true, action:"cashFlow--tabs#showForm", "cashFlow--tabs-target":"link", turbo_action:"advance"}, class: "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" do %>
+        Recebimentos |
+        <% end %>
+      </li>
+      <li class="me-2">
+        <%= link_to new_admins_backoffice_cash_flow_path, id:"link3", data: {turbo_stream: true,  action:"cashFlow--tabs#showForm", "cashFlow--tabs-target":"link"}, class: "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" do %>
+        Adcionar Saldo
+        <% end %>
+      </li>
+    </ul>
+
+  </div>
+
+  <div data-cashFlow--tabs-target="form1" class="mt-8 hidden">
+    <%=render "cash_flows/index_partial"%>
+  </div>
+
+  <div data-cashFlow--tabs-target="form2" class="mt-8 hidden">
+    <%=render "cash_flows/received"%>
+  </div>
+
+
+</div>

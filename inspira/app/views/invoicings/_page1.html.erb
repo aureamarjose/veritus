@@ -1,0 +1,46 @@
+<h1 class="text-center pb-3 border-b-4 text-4xl font-extrabold dark:text-white"><%="Faturamento Ano #{@year}"%></h1>
+
+<%= render "invoicings/table_invoicings"%>
+
+<hr class="mt-8 border-b-4">
+
+<div class="mt-8 border relative overflow-x-auto shadow-md sm:rounded-lg">
+  <%= column_chart [
+    { name: "Faturamento", data: @received },
+    { name: "Lucro Líquido", data: @profit }
+    ],
+    thousands: ".",
+    decimal: ",",
+    round: 2,
+    zeros: true,
+    prefix: "R$ ",
+    title: "Faturamento e Lucro Líquido",
+    height: "300px",
+    xtitle: "Meses",
+    ytitle: "Total (R$)",
+    height: "500px",
+    empty: "Não há dados para exibir",
+    stacked: true
+  %>
+</div>
+
+<hr class="mt-8 border-b-4">
+<div class="xl:flex gap-4">
+
+  <div class=" mt-8 sm:w-full xl:w-3/6  border relative overflow-x-auto shadow-md sm:rounded-lg ">
+    <%= pie_chart @annual_revenue,
+      thousands: ".",
+      decimal: ",",
+      round: 2,
+      zeros: true,
+      suffix: " %",
+      title: "Composição do Lucro e Custos",
+      height: "500px",
+      empty: "Não há dados para exibir"
+    %>
+  </div>
+  <div class="mt-8 sm:w-full xl:w-3/6 border relative overflow-x-auto shadow-md sm:rounded-lg">
+    <h1 class="text-center mt-2 text-xl font-semibold dark:text-white">Faturamento</h1>
+    <%= render "invoicings/table_summary"%>
+  </div>
+</div>

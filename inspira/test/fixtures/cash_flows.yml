@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lauch_date: 2024-10-26
+  lauch_description: MyString
+  lauch_type: MyString
+  lauch_value: 1.5
+
+two:
+  lauch_date: 2024-10-26
+  lauch_description: MyString
+  lauch_type: MyString
+  lauch_value: 1.5

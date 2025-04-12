@@ -1,0 +1,51 @@
+<%= form_with(model: @logger == true ? [:admins_backoffice, cash_flow] : [:users_backoffice, cash_flow], data: { controller: "prevent", action: "keydown->prevent#preventEnter"}) do |form| %>
+
+  <% if cash_flow.errors.any?  %>
+    <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+      <svg class="flex-shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+      </svg>
+      <span class="sr-only">Danger</span>
+      <div>
+        <span class="font-medium"><%= t('errors.template.header', model: cash_flow.model_name.human, count: @cash_flow.errors.count) %></span>
+        <ul class="mt-1.5 list-disc list-inside">
+          <% cash_flow.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-4 pb-3 border-b-2 dark:text-white"></div>
+  <% end %>
+
+  <div class="mt-6 grid gap-6 mb-6 lg:grid-cols-2">
+    <div data-controller="flatpickr">
+      <%= form.label :lauch_date, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+      <%= form.date_field :lauch_date, data:{"flatpickr-target":"inputDate"}, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", autocomplete: "off" %>
+    </div>
+    <div>
+      <%= form.label :lauch_value, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+      <%= form.text_field :lauch_value, value: number_to_currency(@cash_flow.lauch_value, unit: "R$", separator: ",", delimiter: "."), data:{ controller: "formatCurrency", action:"formatCurrency#formatValue", "formatCurrency-target":"inputValue"}, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+    </div>
+  </div>
+
+  <div class="grid gap-6 mb-6 lg:grid-cols-1">
+    <div>
+      <%= form.label :lauch_description, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+      <%= form.text_field :lauch_description, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+    </div>
+
+  </div>
+
+  <hr class="mt-8 border-b-2">
+
+  <div class="mt-8 grid grid-cols-2 w-64 gap-4">
+    <%= form.submit class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+
+    <% if @logger %>
+        <%= link_to "Voltar", admins_backoffice_cash_flows_path	, data: {turbo_stream: true}, class: "w-full text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+      <% else %>
+        <%= link_to "Voltar", users_backoffice_bills_to_pays_path, data: {turbo_stream: true}, class: "w-full text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+      <% end %>
+  </div>
+<% end %>

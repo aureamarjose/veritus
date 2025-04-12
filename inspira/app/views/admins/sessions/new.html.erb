@@ -1,0 +1,38 @@
+<div class="w-96 sm:w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "space-y-6" }) do |f| %>
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm ">
+      <%= image_tag("Aj-3-ajuste.jpeg", class: "mx-auto h-40 w-40", alt: "Image login")%>
+      <h5 class="px-10 mt-8 text-lg text-center font-medium text-gray-900 dark:text-white">Faça seu Login</h5>
+    </div>
+
+    <div class="field">
+      <%= f.label :email, class: "block  text-sm font-medium text-gray-900 dark:text-white" %><br />
+      <%= f.email_field :email, autocomplete: "username", required: true, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white", autofocus: true, placeholder: "name@company.com" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password, class: "block  text-sm font-medium text-gray-900 dark:text-white" %><br />
+      <%= f.password_field :password, autocomplete: "current-password", required: true, class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white", placeholder: "••••••••" %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="flex items-start">
+        <div class="field flex items-center h-5">
+          <%= f.check_box :remember_me, class:"w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 " %>
+          <%= f.label :remember_me, class: "ms-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
+        </div>
+      </div>
+    <% end %>
+
+    <div>
+      <%= f.submit "Login", class: "w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+    </div>
+    <% end %>
+  <div class="mt-4 grid">
+    <%#link_to site_home_index_path, data: {turbo_stream: true}, class: "w-full text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" do %>
+
+    <%#end %>
+  </div>
+  <%#link_to "Esqueceu a sua senha?", new_password_path(resource_name), data: {turbo_stream: true}, class: "mt-5  block text-sm font-medium text-blue-500 dark:text-white" %>
+</div>
+

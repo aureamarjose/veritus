@@ -1,0 +1,53 @@
+<h1 class="mt-8 pb-3 border-b-2 text-2xl font-extrabold dark:text-white">Detalhes do Serviço</h1>
+
+<div data-controller="services--results" id="serviceCalc"
+    data-services--results-classcss-class="text-blue-500"
+    data-services--results-classcssdanger-class="text-red-500"
+    data-services--results-classcsshidden-class="hidden"
+    data-services--results-services--services-outlet="#serviceTotal"
+    data-services--results-services--additionalCharge-outlet="#totalCost"
+    data-services--results-services--received-outlet="#totalReceived"
+    data-services--results-services--generalData-outlet="#financialSituation"
+    >
+
+    <div data-turbo-permanent class="md:w-2/4 sm:w-full md:ms-0 sm:ms-10  mt-8 relative overflow-x-auto shadow-md sm:rounded-lg">
+
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400" >
+            <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">Descrição</th>
+                    <th scope="col" class="px-6 py-3 text-right">Valor</th>
+                </tr>
+            </thead>
+
+            <tbody >
+                <tr  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> Valor total dos serviços:</th>
+                    <td data-services--services-target="serviceTotal" class="text-right release_description px-6 py-4"></td>
+                </tr>
+                <tr  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> Custos Adcionais:</th>
+                    <td data-services--additionalCharge-target="totalCost" class="text-right release_description px-6 py-4"></td>
+                </tr>
+                <tr  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> Custos Operacionais:</th>
+                    <td data-services--operationalCost-target="totalOperational" class="text-right release_description px-6 py-4"></td>
+                </tr>
+                <tr  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> Valor à Receber:</th>
+                    <td data-services--results-target="toReceive" class="text-right release_description px-6 py-4"></td>
+                </tr>
+                <tr  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> Valor Recebido:</th>
+                    <td data-services--received-target="totalReceived" class="text-right release_description px-6 py-4"></td>
+                </tr>
+                <tr data-services--results-target="results"  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th data-services--results-target="textDebit" scope="row" class="lauch_date px-6 py-4 font-medium whitespace-nowrap dark:text-white"> </th>
+                    <td  data-services--results-target="debit" class="text-right font-medium release_description px-6 py-4"></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
