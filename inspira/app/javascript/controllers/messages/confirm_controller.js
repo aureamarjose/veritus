@@ -45,7 +45,7 @@ export default class extends Controller {
         if (this.origin == "client") {
           Turbo.renderStreamMessage(data);
           Toastify({
-            text: "Cliente apagado com sucesso",
+            text: window.translations.clientDelete,
             duration: 3000,
             style: {
               background: "#22c55e",

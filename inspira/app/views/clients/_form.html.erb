@@ -21,12 +21,13 @@
     <div class="grid gap-6 mb-6 lg:grid-cols-3">
       <div>
         <%= form.label :name_client,  class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
-        <%= form.text_field :name_client, class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", placeholder:"João da Silva", required: false %>
+        <%= form.text_field :name_client, class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", placeholder: t('activerecord.attributes.client.name_client'), required: false %>
       </div>
 
       <div>
         <%= form.label :legal_situation, class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
-        <%= form.select :legal_situation, ['Física', 'Jurídica'], {}, { class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"}%>
+        <%= form.select :legal_situation, [[t('activerecord.attributes.client.legal_situations.physical')],
+       [t('activerecord.attributes.client.legal_situations.legal')]], {include_blank: true}, { class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"}%>
       </div>
 
       <div>
@@ -95,7 +96,7 @@
           <% end %>
         </div>
         <div class="mt-6 mb-4">
-          <%= link_to 'Adionar outro Telefone ', '#', data: { action: "click->clients--phones#add_association" }, class:"text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
+          <%= link_to t('activerecord.attributes.phone.add_phone'), '#', data: { action: "click->clients--phones#add_association" }, class:"text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
         </div>
       </div>
 
@@ -141,12 +142,12 @@
           <% end %>
         </div>
         <div class="mt-6 mb-4">
-          <%= link_to 'Adionar outro Email ', '#', data: { action: "click->clients--emails#add_association", turbo_stream: true }, class:"text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
+          <%= link_to t('activerecord.attributes.email.add_email'), '#', data: { action: "click->clients--emails#add_association", turbo_stream: true }, class:"text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
         </div>
       </div>
     </div>
 
-    <h1 class="pb-3 border-b-2 text-2xl font-extrabold dark:text-white">Cadastrar endereço</h1>
+    <h1 class="pb-3 border-b-2 text-2xl font-extrabold dark:text-white"><%=t('activerecord.attributes.address.register_client')%></h1>
     <%# Busca por cep %>
     <div data-controller="clients--searchCep">
       <div class="mt-8 flex items-start max-w-sm ">
@@ -157,10 +158,10 @@
             <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/>
             </svg>
           </div>
-          <%= text_field_tag :inputCep, nil, maxlength: 9, data: { "clients--searchCep-target":"inputCep", action: "input->clients--searchCep#formatCep" } ,  id: "simple-search", class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", placeholder: "Procurar por Cep..." %>
+          <%= text_field_tag :inputCep, nil, maxlength: 9, data: { "clients--searchCep-target":"inputCep", action: "input->clients--searchCep#formatCep" } ,  id: "simple-search", class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", placeholder: t('activerecord.attributes.address.search_cep') %>
         </div>
         <button data-action="click->clients--searchCep#searchCep" type="button" class="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            Buscar
+            <%=t('activerecord.attributes.address.search')%>
         </button>
       </div>
 
@@ -175,7 +176,7 @@
               </svg>
               <span class="sr-only">Danger</span>
               <div>
-                <span class="font-medium">Erro ao adcionar o endereço, verificar os campos:</span>
+                <span class="font-medium"><%= t('activerecord.attributes.address.message_error')%></span>
                   <ul class="mt-1.5 list-disc list-inside">
 
                 </ul>
@@ -187,59 +188,61 @@
 
           <div class="mt-8 grid gap-6 mb-6 md:grid-cols-3">
             <div>
-              <%= label_tag :street, "Logradouro", class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+              <%= label_tag :street, t('activerecord.attributes.address.street'), class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
               <%= text_field_tag :street, nil, data: { action: "input->clients--addAddress#updateStreet", "clients--searchCep-target":"street" }, class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
             </div>
             <div>
-              <%= label_tag :neighborhood, "Bairro", class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+              <%= label_tag :neighborhood, t('activerecord.attributes.address.neighborhood'), class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
               <%= text_field_tag :neighborhood, nil, data: { "clients--searchCep-target":"neighborhood" }, class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
             </div>
             <div>
-              <%= label_tag :city, "Cidade", class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+              <%= label_tag :city, t('activerecord.attributes.address.city'), class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
               <%= text_field_tag :city, nil, data: { "clients--searchCep-target":"city" }, class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
             </div>
             <div>
-              <%= label_tag :cep, "CEP", class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+              <%= label_tag :cep, t('activerecord.attributes.address.cep'), class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
               <%= text_field_tag :cep, nil, maxlength: 8, data: { "clients--searchCep-target":"cep" }, class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
             </div>
             <div>
-              <%= label_tag :add_number, "Número", class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+              <%= label_tag :add_number, t('activerecord.attributes.address.add_number'), class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
               <%= text_field_tag :add_number, nil, maxlength: 8, data: { "clients--searchCep-target":"add_number" }, class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"%>
             </div>
             <div>
-              <%= label_tag :uf, "UF", class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+              <%= label_tag :uf, t('activerecord.attributes.address.uf'), class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
               <%= text_field_tag :uf, nil, data: { "clients--searchCep-target":"uf" }, class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"%>
             </div>
           </div>
           <div>
             <div class="mb-6" >
-              <%= label_tag :complement, "Complemento", class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+              <%= label_tag :complement, t('activerecord.attributes.address.complement'), class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
               <%= text_field_tag :complement, nil, data: { "clients--searchCep-target":"complement" }, class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"%>
             </div>
 
-            <button data-action="clients--searchCep#addAddress" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Adcionar endereço</button>
+            <button data-action="clients--searchCep#addAddress" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><%=t('activerecord.attributes.address.add_address')%></button>
           </div>
 
       </div>
 
       <%# endereço cadastrado %>
 
-      <h1 class="mt-8 pb-3 border-b-2 text-2xl font-extrabold dark:text-white">Endereços Cadastrados</h1>
-        <div data-turbo-permanent data-clients--searchCep-target="message" class="mt-8 font-medium text-gray-900 whitespace-nowrap dark:text-white" >Não há endereços cadastrados.</div>
+      <h1 class="mt-8 pb-3 border-b-2 text-2xl font-extrabold dark:text-white"><%=t('activerecord.attributes.address.address_title')%></h1>
+        <div data-turbo-permanent data-clients--searchCep-target="message" class="mt-8 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          <p><%=t('activerecord.attributes.address.no_addresses')%></p>
+        </div>
 
         <div data-turbo-permanent class="mt-8 relative overflow-x-auto shadow-md sm:rounded-lg">
 
           <table data-clients--searchCep-target="table" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400" >
             <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
-                <th scope="col" class="px-6 py-3"> Logradouro</th>
-                <th scope="col" class="px-6 py-3">Bairro</th>
-                <th scope="col" class="px-6 py-3">Cidade</th>
-                <th scope="col" class="px-6 py-3">CEP</th>
-                <th scope="col" class="px-6 py-3">Número</th>
-                <th scope="col" class="px-6 py-3">UF</th>
-                <th scope="col" class="px-6 py-3 ">Complemento</th>
-                <th scope="col" class="px-6 py-3 text-right">Ações</th>
+                <th scope="col" class="px-6 py-3"><%=t('activerecord.attributes.address.street')%></th>
+                <th scope="col" class="px-6 py-3"><%=t('activerecord.attributes.address.neighborhood')%></th>
+                <th scope="col" class="px-6 py-3"><%=t('activerecord.attributes.address.city')%></th>
+                <th scope="col" class="px-6 py-3"><%=t('activerecord.attributes.address.cep')%></th>
+                <th scope="col" class="px-6 py-3"><%=t('activerecord.attributes.address.add_number')%></th>
+                <th scope="col" class="px-6 py-3"><%=t('activerecord.attributes.address.uf')%></th>
+                <th scope="col" class="px-6 py-3 "><%=t('activerecord.attributes.address.complement')%></th>
+                <th scope="col" class="px-6 py-3 text-right"><%=t('activerecord.attributes.address.action')%></th>
               </tr>
             </thead>
 
@@ -316,17 +319,18 @@
 
       <hr class="mt-8 border-b-2">
 
-      <div class="mt-8 grid grid-cols-2 w-64 gap-4">
+      <div class="mt-8 grid grid-cols-2 w-72 gap-4">
         <%= form.submit class:"text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
         <% if @logger %>
-          <%= link_to "Voltar", admins_backoffice_clients_path, data: {turbo_stream: true}, class: "w-full text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+          <%= link_to t('activerecord.attributes.address.back'), admins_backoffice_clients_path, data: {turbo_stream: true}, class: "w-full text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
         <% else %>
-          <%= link_to "Voltar", users_backoffice_clients_path, data: {turbo_stream: true}, class: "w-full text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+          <%= link_to t('activerecord.attributes.address.back'), users_backoffice_clients_path, data: {turbo_stream: true}, class: "w-full text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
         <% end %>
       </div>
     </div>
   <% end %>
 </div>
+
 
 
 

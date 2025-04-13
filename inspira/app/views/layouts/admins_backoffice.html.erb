@@ -35,10 +35,10 @@
 
   <body>
     <nav class="bg-blue-700 border-gray-200 dark:bg-gray-900 fixed top-0 w-full z-50">
-      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 ">
+      <div class="max-w-full flex flex-wrap items-center justify-between p-4 mx-5 md:mx-20">
 
         <%= link_to admins_backoffice_welcome_index_path, class: "flex items-center space-x-4 rtl:space-x-reverse" do %>
-          <%= image_tag("inspira.png", class: "rounded-full w-16 h-16", alt: "Logo da Empresa") %>
+          <%= image_tag("Aj-3-ajuste.jpeg", class: "rounded-md w-16 h-16", alt: "Logo da Empresa") %>
           <p class="self-center text-center text-2xl font-semibold whitespace-nowrap text-white"> </p>
 
         <% end %>
@@ -87,7 +87,7 @@
                 </li>
                 <li>
                   <%= link_to admins_backoffice_clients_path, data: {turbo_stream: true}, class: "block py-2 px-3 md:text-gray-100 rounded hover:bg-blue-700 hover:text-gray-100 md:hover:bg-transparent md:hover:text-blue-300 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" do %>
-                    Clientes
+                    <%=t('activerecord.models.client.other')%>
                   <% end %>
                 </li>
                 <li>
@@ -132,4 +132,16 @@
     </div>
 
   </body>
+
+  <script>
+    window.translations = {
+      streetRequired: "<%= I18n.t('activerecord.attributes.address.validation.street_required') %>",
+      neighborhoodRequired: "<%= I18n.t('activerecord.attributes.address.validation.neighborhood_required') %>",
+      cityRequired: "<%= I18n.t('activerecord.attributes.address.validation.city_required') %>",
+      cepRequired: "<%= I18n.t('activerecord.attributes.address.validation.cep_required') %>",
+      numberRequired: "<%= I18n.t('activerecord.attributes.address.validation.number_required') %>",
+      ufRequired: "<%= I18n.t('activerecord.attributes.address.validation.uf_required') %>",
+      clientDelete: "<%=I18n.t('activerecord.message.delete', model: Client)%>"
+    };
+  </script>
 </html>

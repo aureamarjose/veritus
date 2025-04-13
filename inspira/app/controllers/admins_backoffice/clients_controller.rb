@@ -87,7 +87,7 @@ module AdminsBackoffice
       respond_to do |format|
         if @client.save
           format.html do
-            redirect_to(admins_backoffice_clients_path, notice: "Cliente foi criado com sucesso.")
+            redirect_to(admins_backoffice_clients_path, notice: I18n.t('activerecord.message.success',  model: Client))
           end
           format.json { render(:show, status: :created, location: @client) }
         else
@@ -103,7 +103,7 @@ module AdminsBackoffice
       respond_to do |format|
         if @client.update(client_params)
           format.html do
-            redirect_to(admins_backoffice_clients_path, notice: "Cliente foi atualizado com sucesso.")
+            redirect_to(admins_backoffice_clients_path, notice: I18n.t('activerecord.message.update',  model: Client))
           end
           format.json { render(:show, status: :ok, location: @client) }
         else
@@ -120,13 +120,6 @@ module AdminsBackoffice
 
       respond_to do |format|
         format.turbo_stream { render(turbo_stream: turbo_stream.remove("client_#{params[:id]}")) }
-        format.html { redirect_to(admins_backoffice_clients_path, notice: "Cliente apagado com sucesso.") }
-        format.json do
-          render(
-            json: { redirect_url: admins_backoffice_clients_path, notice: "Cliente apagado com sucesso." },
-            status: :ok,
-          )
-        end
       end
     end
 

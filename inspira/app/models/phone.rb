@@ -10,9 +10,9 @@ class Phone < ApplicationRecord
   # Telefone Fixo Cel
   def format_phone
     if phone.blank?
-      errors.add(:phone, message: "não pode ficar em branco")
+      errors.add(:phone, message: I18n.t('activerecord.attributes.phone.validation.number_blank'))
     elsif phone.present? && !phone?
-      errors.add(:phone, message: "Formato inválido")
+      errors.add(:phone, message: I18n.t('activerecord.attributes.phone.validation.invalid_format'))
     end
   end
 

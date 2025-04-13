@@ -23,6 +23,7 @@ class Client < ApplicationRecord
   accepts_nested_attributes_for :services, allow_destroy: true
 
   validates :name_client, presence: true
+  validates :legal_situation, presence: true
   validate :format_cpf
   validate :phone_presence
   # validates_associated :phones
@@ -36,9 +37,9 @@ class Client < ApplicationRecord
   # Cpf Cnpj
   def format_cpf
     if number_doc.blank?
-      errors.add(:number_doc, "não pode ficar em branco")
+      errors.add(:number_doc, message: I18n.t('activerecord.attributes.client.validation.number_doc_blank'))
     elsif number_doc.present? && !cpf_cnpj?
-      errors.add(:number_doc, "Formato inválido.")
+      errors.add(:number_doc, message: I18n.t('activerecord.attributes.client.validation.invalid_format'))
     end
   end
 
@@ -56,19 +57,19 @@ class Client < ApplicationRecord
 
   def phone_presence
     if phones.blank? || phones.all?(&:marked_for_destruction?)
-      errors.add(:phones, "deve ter ao menos um telefone cadastrado.")
+      errors.add(:phones, I18n.t('activerecord.attributes.phone.validation.present_validation'))
     end
   end
 
   def email_presence
     if emails.blank? || emails.all?(&:marked_for_destruction?)
-      errors.add(:emails, "deve ter ao menos um email cadastrado.")
+      errors.add(:emails, I18n.t('activerecord.attributes.email.validation.present_validation'))
     end
   end
 
   def address
     if addresses.blank? || addresses.all?(&:marked_for_destruction?)
-      errors.add(:addresses, "deve ter ao menos um endereço cadastrado.")
+      errors.add(:addresses, I18n.t('activerecord.attributes.address.validation.present_validation'))
     end
   end
 end

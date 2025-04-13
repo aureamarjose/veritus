@@ -8,9 +8,9 @@ class Email < ApplicationRecord
   # emails
   def format_email
     if email.blank?
-      errors.add(:email, message: "não pode ficar em branco")
+      errors.add(:email, message: I18n.t('activerecord.attributes.email.validation.email_blank'))
     elsif email.present? && !email_valid?
-      errors.add(:email, message: "inválido.")
+      errors.add(:email, message: I18n.t('activerecord.attributes.email.validation.invalid_format'))
     end
   end
 

@@ -1,0 +1,172 @@
+en:
+  activerecord:
+    models:
+      admin:
+        one: Administrador
+        other: Administradores
+      user:
+        one: Usuário
+        other: Usuários
+      client:
+        one: Client
+        other: Clients
+      phones:
+        one: Telefone
+        other: Telefones
+        add_phone: "Add another Phonett"
+      emails:
+        one: E-mail
+        other: E-mails
+      address:
+        one: Endereço
+        other: Endereços
+      addresses:
+        one: Endereço
+        other: Endereços
+      service:
+        one: Serviço
+        other: Serviços
+      bills_to_pay:
+        one: Conta a Pagar
+        other: Contas a Pagar
+      categories_accounts_payable:
+        one: Categoria de Conta a Pagar
+        other: Categorias de Contas a Pagar
+      cash_flow:
+        one: Fluxo de Caixa
+        other: Fluxos de Caixa
+      list_service:
+        one: Lista de Serviços
+        other: Listas de Serviços
+      receiveds:
+        one: Recebido
+        other: Recebidos
+
+    attributes:
+      admin:
+        name: "Nome"
+        email: "E-mail"
+        password: "Senha"
+        password_confirmation: "Confirmação de Senha"
+        characters minimum: "Mínimo de 6 caracteres"
+        remember_me: "Lembrar-me"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+        current_password: "Senha Atual"
+      user:
+        name: "Nome"
+        email: "E-mail"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+      # will translate User attribute "login" as "Handle"
+      client:
+        name_client: "Customer name"
+        legal_situation: "Private Person or Legal Entity"
+        number_doc: "Tax Identification Number (CPF/CNPJ)"
+        addresses: "Addresses"
+        phones: "Phones"
+        emails: "E-mails"
+        register_client: "Register Client"
+        new_client: "New Client"
+        edit_client: "Edit Client"
+        validation:
+          number_doc_blank: "can't be blank"
+          invalid_format: "invalid "
+        legal_situations:
+          physical: "Individual"
+          legal: "Company"
+        table:
+          client: Client
+          number_doc: "Tax Identification Number (CPF/CNPJ)"
+          phones: "Phones"
+          action: "Action"
+        search:
+          placeholder: "Search Name or CPF/CNPJ"
+          no_client: "There are no registered customers."
+          back: "Back"
+      phone:
+        phone: "Phones"
+        add_phone: "Add another Phone"
+        validation:
+          number_blank: "can't be blank"
+          invalid_format: "invalid format"
+          present_validation: must have at least one registered phone number.
+      phones:
+        phone: "Phone"
+      emails:
+        email: "E-mail"
+      email:
+        email: "E-mail"
+        add_email: "Add another E-mail"
+        validation:
+          email_blank: "can't be blank"
+          invalid_format: "invalid "
+          present_validation: "must have at least one registered email address."
+      address:
+        street: "Street Address"
+        add_number: "Number"
+        complement: "Complement"
+        neighborhood: "Neighborhood"
+        city: "City"
+        uf: "State (UF)"
+        cep: "Postal Code (CEP)"
+        add_address: "Add Address"
+        message_error: "Error adding address, check fields"
+        validation:
+          street_required: "Street can't be blank"
+          neighborhood_required: "Neighborhood can't be blank"
+          city_required: "City can't be blank"
+          cep_required: "Postal Code can't be blank"
+          number_required: "Number can't be blank"
+          uf_required: "State can't be blank"
+          present_validation: "must have at least one registered address."
+        address_title: "Registered Addresses"
+        action: "Action"
+        back: "Back"
+        search: "Search"
+        search_cep: "Search CEP..."
+        no_addresses: "There are no registered addresses."
+
+      addresses:
+        street: "Street Address"
+        add_number: "Number"
+        complement: "Complement"
+        neighborhood: "Neighborhood"
+        city: "City"
+        uf: "State (UF)"
+        cep: "Postal Code (CEP)"
+      service:
+        folder: "Pasta"
+        sector: "Setor"
+        start_date: "Data de Início"
+        end_date: "Data de Término"
+        financial_situation: "Situação Financeira"
+        progress: "Progresso"
+        description: "Descrição"
+        client: "Contratante"
+        exc_client2: "Beneficiário"
+        address: "Local de Execução"
+      bills_to_pay:
+        description: "Descrição"
+        expiration_date: "Data de vencimento"
+        value: "Valor"
+        pay_day: "Data de Pagamento"
+        status: "Situação do Pagamento"
+        category_id: "Categoria"
+      categories_accounts_payable:
+        type_account_id: "Tipo de Conta"
+        type_of_account: "Tipo de Conta"
+        name: "Nome"
+      cash_flow:
+        lauch_date: "Data de Lançamento"
+        lauch_value: "Valor do Lançamento"
+        lauch_description: "Descrição do Lançamento"
+      list_service:
+        service_name: "Nome do Serviço"
+      receiveds:
+        lauch_date: "Data de recebimento"
+        lauch_value: "Valor recebido"
+        release_description: "Descrição do recebimento"
+
+
+
