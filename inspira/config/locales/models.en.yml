@@ -24,8 +24,8 @@ en:
         one: Endereço
         other: Endereços
       service:
-        one: Serviço
-        other: Serviços
+        one: Service
+        other: Services
       bills_to_pay:
         one: Conta a Pagar
         other: Contas a Pagar
@@ -136,16 +136,35 @@ en:
         uf: "State (UF)"
         cep: "Postal Code (CEP)"
       service:
-        folder: "Pasta"
-        sector: "Setor"
-        start_date: "Data de Início"
-        end_date: "Data de Término"
-        financial_situation: "Situação Financeira"
-        progress: "Progresso"
-        description: "Descrição"
-        client: "Contratante"
-        exc_client2: "Beneficiário"
-        address: "Local de Execução"
+        folder: "Service order"
+        sector: "Sector"
+        start_date: "Start Date"
+        end_date: "End Date"
+        financial_situation: "Financial Situation"
+        progress: "Progress"
+        description: "Description"
+        client: "Client"
+        exc_client2: "Beneficiary"
+        address: "Place of execution"
+        new_service: "New Service"
+        select_address: "Select Address"
+        action:
+          display_services: "Display services"
+          list_services: "List services"
+          new_service: "New Service"
+          action: "Action"
+          back:
+        tabs:
+          general_data: "General Data"
+          beneficiary: "Beneficiary"
+          services: "Sevices"
+          additional_costs: "Additional Costs"
+          operating_costs: "Operating Costs"
+          receipts: "Receipts"
+          details: "Details"
+        search:
+          placeholder: "Search Name or CPF/CNPJ"
+
       bills_to_pay:
         description: "Descrição"
         expiration_date: "Data de vencimento"

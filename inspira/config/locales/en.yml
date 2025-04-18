@@ -9,6 +9,7 @@ en:
     action:
       confirm: "Confirm"
       cancel: "Cancel"
+      back: Back
     pagination:
       previous: "Previous"
       next: "Next"

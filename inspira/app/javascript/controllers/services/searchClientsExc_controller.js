@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import { useDebounce } from 'stimulus-use'
 
 export default class extends Controller {
-  static targets = ["search", "results", "table", "clientId", "message", "address", "addressId", "tbodyAddress", "tableAddress", "messageAddress"]
+  static targets = ["search", "results", "table", "clientId", "message", "address", "addressId", "tbodyAddress", "tableAddress", "messageAddress", "tbodyClient"]
   static debounces = ["searchClients"]
   address = ""
 
@@ -186,6 +186,7 @@ export default class extends Controller {
     if (tr) {
       tr.parentNode.removeChild(tr);
       this.clientIdTarget.value = ""
+      this.addressTarget.innerHTML = ""
       this.toCheck()
     }
   }
@@ -333,7 +334,13 @@ export default class extends Controller {
 
   deleteAddress(addressId) {
     // Encontre a linha correspondente na tabela
-    const tr = document.getElementById(`address_${addressId}`);
+    const tr = document.getElementById(`address_${addressId}`)
+    const client = Array.from(this.tbodyClientTarget.querySelectorAll('tr'))
+
+    if (client.length === 0) {
+      this.addressTarget.innerHTML = ""
+    }
+
     // Se a linha existir, remova-a
     if (tr) {
       tr.parentNode.removeChild(tr);
@@ -357,52 +364,57 @@ export default class extends Controller {
 
     if (tr) {
       // Limpa o address_id
-      const addressInput = document.getElementById(`address_id_${addressId}`);
+      const addressInput = document.getElementById(`address_id_${addressId}`)
       if (addressInput) {
-        addressInput.value = '';
+        tr.parentNode.removeChild(tr)
+        addressInput.value = ''
       }
-
-      // Oculta a linha
-      tr.style.display = 'none';
-
       this.toCheckAddress();
     }
   }
 
   toCheckAddress() {
     //let rows = this.tableTarget.querySelectorAll('tr');
-    let rows = Array.from(this.tbodyAddressTarget.querySelectorAll('tr'))
-    //console.log('rows2', rows.length)
+    let address = Array.from(this.tbodyAddressTarget.querySelectorAll('tr'))
+    //console.log("passou aqui..")
+    let client = Array.from(this.tbodyClientTarget.querySelectorAll('tr'))
+    //console.log("client", client.length)
 
-    if (rows.length === 0) {
+    let isClientEmpty = true
+    let isAddressEmpty = true
+
+    client.forEach((row) => {
+      // Captura o ID do cliente a partir do atributo `id`
+      const clientId = row.id.replace('client_', ''); // Remove o prefixo "client_"
+      //console.log("Client ID:", clientId);
+      isClientEmpty = clientId !== "" ? false : true
+      //console.log("isClientEmpty", isClientEmpty)
+    });
+
+    if (address.length === 0) {
       this.tableAddressTarget.classList.add('hidden');
       this.messageAddressTarget.classList.remove('hidden');
       this.addressTarget.disabled = false;
     }
 
-    rows.forEach((row) => {
-      // Supondo que a célula name_client seja a segunda célula em cada linha
-      let nameClientCell = row.cells[1];
+    address.forEach(() => {
+      //console.log("isClientEmpty", isClientEmpty)
+      //console.log("isAddressEmpty", !isAddressEmpty)
 
-      if (nameClientCell) {
-        let text = nameClientCell.textContent || nameClientCell.innerText;
-
-        if (!text.trim()) {
-          //console.log('A célula name_client está em branco na linha', row);
-          this.tableAddressTarget.classList.add('hidden');
-          this.messageAddressTarget.classList.remove('hidden');
-          this.addressTarget.disabled = false;
-        } else {
-          //console.log('A célula name_client não está em branco na linha', row);
-          this.tableAddressTarget.classList.remove('hidden');
-          this.messageAddressTarget.classList.add('hidden');
-          this.searchAddress()
-          this.addressTarget.disabled = true;
-        }
+      if ((isClientEmpty == false) && (!isAddressEmpty == false)) {
+        //console.log("client and address presence")
+        this.tableAddressTarget.classList.remove('hidden');
+        this.messageAddressTarget.classList.add('hidden');
+        this.searchAddress()
+        this.addressTarget.disabled = true;
+      } else if ((isClientEmpty == true) && (!isAddressEmpty == true)) {
+        //console.log("client and address no presence")
+      } else if ((isClientEmpty == false) && (!isAddressEmpty == true)) {
+        //console.log("client presence and address no presence")
+        this.tableAddressTarget.classList.add('hidden');
+        this.messageAddressTarget.classList.remove('hidden');
+        this.addressTarget.disabled = false;
       }
     });
-
-
   }
-
 }

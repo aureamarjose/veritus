@@ -24,38 +24,38 @@
         <ul class="flex flex-wrap -mb-px">
           <li class="me-2">
             <%= link_to "", id:"link1", data: {turbo_stream: true, action:"services--nav#showForm", "services--nav-target":"link"}, class: "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" do %>
-            Dados Gerais |
+              <%=t('activerecord.attributes.service.tabs.general_data')%> |
             <% end %>
 
           </li>
           <li class="me-2">
             <%= link_to "", id:"link2", data: {turbo_stream: true, action:"services--nav#showForm", "services--nav-target":"link"}, class: "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" do %>
-            Beneficiário |
+              <%=t('activerecord.attributes.service.tabs.beneficiary')%>  |
             <% end %>
           </li>
           <li class="me-2">
             <%= link_to "", id:"link3", data: {turbo_stream: true, action:"services--nav#showForm", "services--nav-target":"link"}, class: "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" do %>
-            Serviços |
+              <%=t('activerecord.attributes.service.tabs.services')%> |
             <% end %>
           </li>
           <li class="me-2">
             <%= link_to "", id:"link4", data: {turbo_stream: true, action:"services--nav#showForm", "services--nav-target":"link"}, class: "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" do %>
-            Custos Adcionais |
+             <%=t('activerecord.attributes.service.tabs.additional_costs')%> |
             <% end %>
           </li>
           <li class="me-2">
             <%= link_to "", id:"link5", data: {turbo_stream: true, action:"services--nav#showForm", "services--nav-target":"link"}, class: "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" do %>
-            Custos Operacionais |
+             <%=t('activerecord.attributes.service.tabs.operational_costs')%> |
             <% end %>
           </li>
           <li class="me-2">
             <%= link_to "", id:"link6", data: {turbo_stream: true, action:"services--nav#showForm", "services--nav-target":"link"}, class: "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" do %>
-            Recebimentos |
+             <%=t('activerecord.attributes.service.tabs.receipts')%> |
             <% end %>
           </li>
           <li class="me-2">
             <%= link_to "", id:"link7", data: {turbo_stream: true, action:"services--nav#showForm", "services--nav-target":"link"}, class: "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" do %>
-            Detalhes
+              <%=t('activerecord.attributes.service.tabs.details')%>
             <% end %>
           </li>
         </ul>
@@ -107,13 +107,13 @@
 
     <hr class="mt-8 border-b-2">
 
-    <div class="mt-8 grid grid-cols-2 w-64 gap-4">
+    <div class="mt-8 grid grid-cols-2 sm:w-full md:w-1/2 gap-4">
       <%= form.submit class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
 
       <% if @logger %>
-        <%= link_to "Voltar", admins_backoffice_services_path, data: {turbo_stream: true}, class: "w-full text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+        <%= link_to t('activerecord.action.back'), admins_backoffice_services_path, data: {turbo_stream: true}, class: "w-full text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
       <% else %>
-        <%= link_to "Voltar", users_backoffice_services_path, data: {turbo_stream: true}, class: "w-full text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+        <%= link_to t('activerecord.action.back'), users_backoffice_services_path, data: {turbo_stream: true}, class: "w-full text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
       <% end %>
     </div>
   <% end %>

@@ -91,19 +91,21 @@
                   <% end %>
                 </li>
                 <li>
-                  <button id="dropdownNavbarLink2" data-dropdown-toggle="dropdownNavbar2" class="flex items-center justify-between w-full py-2 px-3 md:text-gray-100 hover:bg-blue-700 hover:text-gray-100  md:hover:bg-transparent md:border-0 md:hover:text-blue-300 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Serviços <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/> </svg>
+                  <button id="dropdownNavbarLink2" data-dropdown-toggle="dropdownNavbar2" class="flex items-center justify-between w-full py-2 px-3 md:text-gray-100 hover:bg-blue-700 hover:text-gray-100  md:hover:bg-transparent md:border-0 md:hover:text-blue-300 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
+                    <%=t('activerecord.models.service.other')%>
+                    <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/> </svg>
                   </button>
                   <!-- Dropdown menu -->
                   <div id="dropdownNavbar2" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownLargeButton2">
                       <li>
                         <%= link_to admins_backoffice_services_path, data: {turbo_stream: true}, class: "block px-4 py-2 hover:bg-blue-700 hover:text-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" do %>
-                        Exibir Serviços
+                        <%=t('activerecord.attributes.service.action.display_services')%>
                         <% end %>
                       </li>
                       <li>
                          <%= link_to admins_backoffice_list_services_path, data: {turbo_stream: true}, class: "block px-4 py-2 hover:bg-blue-700 hover:text-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" do %>
-                        Lista de Serviços
+                        <%=t('activerecord.attributes.service.action.list_services')%>
                         <% end %>
                       </li>
                     </ul>
