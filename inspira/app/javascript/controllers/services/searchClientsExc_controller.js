@@ -314,14 +314,14 @@ export default class extends Controller {
 
     // Adiciona as células à linha
     tr.innerHTML = `
-            <td class="px-6 py-4">${address.street}</td>
-            <td class="px-6 py-4">${address.neighborhood}</td>
-            <td class="px-6 py-4">${address.city}</td>
-            <td class="px-6 py-4">${address.cep}</td>
-            <td class="px-6 py-4">${address.add_number}</td>
-            <td class="px-6 py-4">${address.uf}</td>
-            <td class="px-6 py-4">${address.complement === null ? "" : address.complement}</td>
-            `;
+      <td class="px-6 py-4">${address.street}</td>
+      <td class="px-6 py-4">${address.neighborhood}</td>
+      <td class="px-6 py-4">${address.city}</td>
+      <td class="px-6 py-4">${address.cep}</td>
+      <td class="px-6 py-4">${address.add_number}</td>
+      <td class="px-6 py-4">${address.uf}</td>
+      <td class="px-6 py-4">${address.complement === null ? "" : address.complement}</td>
+      `;
     tr.appendChild(deleteCell);
 
     // Adiciona a linha ao corpo da tabela
@@ -391,7 +391,12 @@ export default class extends Controller {
       //console.log("isClientEmpty", isClientEmpty)
     });
 
-    if (address.length === 0) {
+    let addressId
+    address.forEach((row) => {
+      addressId = row.id.replace('address_', '')
+    })
+
+    if (address.length === 0 || addressId === "") {
       this.tableAddressTarget.classList.add('hidden');
       this.messageAddressTarget.classList.remove('hidden');
       this.addressTarget.disabled = false;

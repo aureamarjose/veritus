@@ -4,7 +4,7 @@ export default class extends Controller {
   static targets = ["form1", "form2", "form3", "form4", "form5", "form6", "form7", "link"]
 
   connect() {
-    //console.log('nav_controller')
+    //console.log('nav_controller', this.linkTarget.value)
     this.form1Target.classList.remove('hidden')
     this.updateLinks("link1")
   }
@@ -13,7 +13,6 @@ export default class extends Controller {
     event.preventDefault()
     this.toHide()
     switch (event.target.id) {
-
       case 'link1':
         this.form1Target.classList.remove('hidden')
         break;

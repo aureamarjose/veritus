@@ -147,20 +147,23 @@ export default class extends Controller {
   }
 
   validateFields() {
-    let fields = [this.inputLauchDateTarget, this.inputReleaseDescriptionTarget, this.inputLauchValueTarget]
+    let fields = [this.inputLauchDateTarget, this.inputReleaseDescriptionTarget, this.inputListServiceIdTarget, this.inputLauchValueTarget]
     let fieldNames = []
 
     for (let field of fields) {
       if (!field.value) {
         switch (field) {
           case this.inputLauchDateTarget:
-            fieldNames.push('Data campo obrigatório')
+            fieldNames.push(window.translations.messageServiceDate)
             break
           case this.inputReleaseDescriptionTarget:
-            fieldNames.push('Descrição campo obrigatório')
+            fieldNames.push(window.translations.messageServiceDescription)
+            break
+          case this.inputListServiceIdTarget:
+            fieldNames.push(window.translations.messageServiceCostService)
             break
           case this.inputLauchValueTarget:
-            fieldNames.push('Valor campo obrigatório')
+            fieldNames.push(window.translations.messageServiceAmount)
             break
         }
 

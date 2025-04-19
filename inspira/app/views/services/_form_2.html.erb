@@ -16,7 +16,9 @@
     <div data-services--searchClientsExc-target="results" class="mt-8 w-48 text-sm font-medium text-gray-900 bg-white  border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
     </div>
   </div>
-  <div data-services--searchClientsExc-target="message" class="mt-8 font-medium text-gray-900 whitespace-nowrap dark:text-white" >Favor adicione o proprietário!</div>
+  <div data-services--searchClientsExc-target="message" class="mt-8 font-medium text-gray-900 whitespace-nowrap dark:text-white" >
+    <%=t('activerecord.attributes.service.add_beneficiary')%>
+  </div>
 
   <div  class="mt-8 relative overflow-x-auto shadow-md sm:rounded-lg">
     <table data-services--searchClientsExc-target="table" class="data-table2 w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400" >
@@ -78,7 +80,9 @@
 
     <%=form.hidden_field :address_id, data: {"services--searchClientsExc-target":"addressId"} %>
 
-    <div data-services--searchClientsExc-target="messageAddress" class="mt-8 font-medium text-gray-900 whitespace-nowrap dark:text-white" >Favor adicione um endereço!</div>
+    <div data-services--searchClientsExc-target="messageAddress" class="mt-8 font-medium text-gray-900 whitespace-nowrap dark:text-white" >
+      <%=t('activerecord.attributes.service.add_address')%>
+    </div>
 
     <div  class="mt-8 relative overflow-x-auto shadow-md sm:rounded-lg">
       <table data-services--searchClientsExc-target="tableAddress" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400" >
