@@ -16,112 +16,109 @@
     <div data-services--searchClientsExc-target="results" class="mt-8 w-48 text-sm font-medium text-gray-900 bg-white  border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
     </div>
   </div>
+  <div data-services--searchClientsExc-target="message" class="mt-8 font-medium text-gray-900 whitespace-nowrap dark:text-white" >Favor adicione o proprietário!</div>
 
-    <div data-services--searchClientsExc-target="message" class="mt-8 font-medium text-gray-900 whitespace-nowrap dark:text-white" >Favor adicione o proprietário!</div>
+  <div  class="mt-8 relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table data-services--searchClientsExc-target="table" class="data-table2 w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400" >
+      <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th scope="col" class="px-6 py-3">
+            <%=t('activerecord.attributes.client.table.client')%>
+          </th>
+          <th scope="col" class="px-6 py-3">
+            <%=t('activerecord.attributes.client.table.number_doc')%>
+          </th>
+          <th scope="col" class="px-6 py-3">
+            <%=t('activerecord.attributes.client.table.phones')%>
+          </th>
+          <th scope="col" class="px-6 py-3">E-mails</th>
+          <th scope="col" class="px-6 py-3 text-right">
+            <%=t('activerecord.attributes.client.table.action')%>
+          </th>
+        </tr>
+      </thead>
+
+      <tbody data-services--searchClientsExc-target="tbodyClient">
+        <tr  id="client_<%= @exc_client&.id %>" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+          <td class="px-6 py-4"><%= @exc_client&.name_client %></td>
+          <td class="px-6 py-4"><%= @exc_client&.number_doc %></td>
+          <td class="px-6 py-4">
+          <% @exc_client&.phones&.each do |phone| %>
+              <%= phone.phone %><br>
+          <% end %>
+          </td>
+          <td class="px-6 py-4">
+          <% @exc_client&.emails&.each do |email| %>
+              <%= email.email %><br>
+          <% end %>
+          </td>
+          <td class="px-6 py-4 text-right">
+          <button data-action="services--searchClientsExc#deleteClient2" data-client-id="<%= @exc_client&.id %>" ><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+          <path fill-rule="evenodd" d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/></svg></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <%= form.hidden_field :exc_client2_id, data:{"services--searchClientsExc-target":"clientId"} %>
+  </div>
+
+  <h1 class="mt-8 pb-3 border-b-2 text-2xl font-extrabold dark:text-white">
+    <%=t('activerecord.attributes.service.address')%>
+  </h1>
+
+  <div class="mt-8">
+    <div class="grid grid-cols-2">
+      <div>
+        <%= label_tag nil, t('activerecord.attributes.service.select_address'), class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+        <%= select_tag  [['', '']], {}, {data:{"services--searchClientsExc-target":"address"}, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"}%>
+      </div>
+    </div>
+
+    <%=form.hidden_field :address_id, data: {"services--searchClientsExc-target":"addressId"} %>
+
+    <div data-services--searchClientsExc-target="messageAddress" class="mt-8 font-medium text-gray-900 whitespace-nowrap dark:text-white" >Favor adicione um endereço!</div>
 
     <div  class="mt-8 relative overflow-x-auto shadow-md sm:rounded-lg">
-      <table data-services--searchClientsExc-target="table" class="data-table2 w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400" >
+      <table data-services--searchClientsExc-target="tableAddress" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400" >
         <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
-            <th scope="col" class="px-6 py-3">
-              <%=t('activerecord.attributes.client.table.client')%>
-            </th>
-            <th scope="col" class="px-6 py-3">
-              <%=t('activerecord.attributes.client.table.number_doc')%>
-            </th>
-            <th scope="col" class="px-6 py-3">
-              <%=t('activerecord.attributes.client.table.phones')%>
-            </th>
-            <th scope="col" class="px-6 py-3">E-mails</th>
-            <th scope="col" class="px-6 py-3 text-right">
-              <%=t('activerecord.attributes.client.table.action')%>
-            </th>
+            <th scope="col" class="px-6 py-3"><%=t('activerecord.attributes.address.street')%></th>
+            <th scope="col" class="px-6 py-3"><%=t('activerecord.attributes.address.neighborhood')%></th>
+            <th scope="col" class="px-6 py-3"><%=t('activerecord.attributes.address.city')%></th>
+            <th scope="col" class="px-6 py-3"><%=t('activerecord.attributes.address.cep')%></th>
+            <th scope="col" class="px-6 py-3"><%=t('activerecord.attributes.address.add_number')%></th>
+            <th scope="col" class="px-6 py-3"><%=t('activerecord.attributes.address.uf')%></th>
+            <th scope="col" class="px-6 py-3 "><%=t('activerecord.attributes.address.complement')%></th>
+            <th scope="col" class="px-6 py-3 text-right"><%=t('activerecord.attributes.address.action')%></th>
           </tr>
         </thead>
 
-        <tbody data-services--searchClientsExc-target="tbodyClient">
-          <tr  id="client_<%= @exc_client&.id %>" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <td class="px-6 py-4"><%= @exc_client&.name_client %></td>
-            <td class="px-6 py-4"><%= @exc_client&.number_doc %></td>
-            <td class="px-6 py-4">
-            <% @exc_client&.phones&.each do |phone| %>
-                <%= phone.phone %><br>
-            <% end %>
-            </td>
-            <td class="px-6 py-4">
-            <% @exc_client&.emails&.each do |email| %>
-                <%= email.email %><br>
-            <% end %>
-            </td>
+        <tbody data-services--searchClientsExc-target="tbodyAddress">
+          <tr   id="address_<%= @address&.id %>" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            <td class="px-6 py-4"><%= @address&.street %></td>
+            <td class="px-6 py-4"><%= @address&.neighborhood %></td>
+            <td class="px-6 py-4"><%= @address&.city %></td>
+            <td class="px-6 py-4"><%= @address&.cep %></td>
+            <td class="px-6 py-4"><%= @address&.add_number %></td>
+            <td class="px-6 py-4"><%= @address&.uf %></td>
+            <td class="px-6 py-4"><%= @address&.complement %></td>
             <td class="px-6 py-4 text-right">
-            <button data-action="services--searchClientsExc#deleteClient2" data-client-id="<%= @exc_client&.id %>" ><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-            <path fill-rule="evenodd" d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/></svg></button>
+              <%= hidden_field_tag 'service[address_id]', @address&.id,
+                id: "address_id_#{@address&.id}",
+                class: 'address-id-input',
+                data: { 'address-id': @address&.id }
+              %>
+
+              <button data-action="services--searchClientsExc#deleteAddress2" data-address-id="<%= @address&.id %>" ><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/></svg>
+              </button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-    <div>
-      <%= form.hidden_field :exc_client2_id, data:{"services--searchClientsExc-target":"clientId"} %>
-    </div>
-
-    <h1 class="mt-8 pb-3 border-b-2 text-2xl font-extrabold dark:text-white">
-      <%=t('activerecord.attributes.service.address')%>
-    </h1>
-
-    <div class="mt-8">
-      <div class="grid grid-cols-2">
-        <div>
-          <%= label_tag nil, t('activerecord.attributes.service.select_address'), class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
-          <%= select_tag  [['', '']], {}, {data:{"services--searchClientsExc-target":"address"}, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"}%>
-        </div>
-      </div>
-
-        <%=form.hidden_field :address_id, data: {"services--searchClientsExc-target":"addressId"} %>
-
-        <div data-services--searchClientsExc-target="messageAddress" class="mt-8 font-medium text-gray-900 whitespace-nowrap dark:text-white" >Favor adicione um endereço!</div>
-
-        <div  class="mt-8 relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table data-services--searchClientsExc-target="tableAddress" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400" >
-                <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" class="px-6 py-3"> logradouro</th>
-                        <th scope="col" class="px-6 py-3">Bairro</th>
-                        <th scope="col" class="px-6 py-3">Cidade</th>
-                        <th scope="col" class="px-6 py-3">Cep</th>
-                        <th scope="col" class="px-6 py-3 ">Número</th>
-                        <th scope="col" class="px-6 py-3 ">UF</th>
-                        <th scope="col" class="px-6 py-3 ">Complemento</th>
-                        <th scope="col" class="px-6 py-3 text-right">Ações</th>
-                    </tr>
-                </thead>
-
-                <tbody data-services--searchClientsExc-target="tbodyAddress">
-                    <tr   id="address_<%= @address&.id %>" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <td class="px-6 py-4"><%= @address&.street %></td>
-                        <td class="px-6 py-4"><%= @address&.neighborhood %></td>
-                        <td class="px-6 py-4"><%= @address&.city %></td>
-                        <td class="px-6 py-4"><%= @address&.cep %></td>
-                        <td class="px-6 py-4"><%= @address&.add_number %></td>
-                        <td class="px-6 py-4"><%= @address&.uf %></td>
-                        <td class="px-6 py-4"><%= @address&.complement %></td>
-                        <td>
-                          <%= hidden_field_tag 'service[address_id]', @address&.id,
-                            id: "address_id_#{@address&.id}",
-                            class: 'address-id-input',
-                            data: { 'address-id': @address&.id }
-                          %>
-                        </td>
-
-                        <td class="px-6 py-4 text-right">
-                          <button data-action="services--searchClientsExc#deleteAddress2" data-address-id="<%= @address&.id %>" ><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                            <path fill-rule="evenodd" d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/></svg>
-                          </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+  </div>
 </div>
 

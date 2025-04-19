@@ -148,6 +148,12 @@ en:
         address: "Place of execution"
         new_service: "New Service"
         select_address: "Select Address"
+        include_services: "Include Services"
+        added_services: "Added Services"
+        no_services: "No services registered."
+        add_cost: "Add Cost"
+        additional_costs: "Additional Costs"
+        no_cost: "No additional costs registered."
         action:
           display_services: "Display services"
           list_services: "List services"
@@ -164,7 +170,25 @@ en:
           details: "Details"
         search:
           placeholder: "Search Name or CPF/CNPJ"
-
+        label_input:
+          date: "Date"
+          service: "Service"
+          services: "Services"
+          quantity: "Quantity"
+          amount: "Amount"
+          total: "Total"
+          add: "Add"
+          action: "action"
+          description: "Description"
+        error_message_service:
+          title_error_service: "Error adding the service. Please check the fields."
+          title_error_cost: "Error adding the cost. Please check the fields."
+          date: "Date is required"
+          service: "Service is required"
+          quantity: "Quantity is required"
+          amount: "Amount is required"
+          total: "Total is required"
+          description: "Description is required"
       bills_to_pay:
         description: "Descrição"
         expiration_date: "Data de vencimento"

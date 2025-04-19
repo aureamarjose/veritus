@@ -1,112 +1,126 @@
-<h1 class="mt-8 pb-3 border-b-2 text-2xl font-extrabold dark:text-white">Adcionar Custo</h1>
+<h1 class="mt-8 pb-3 border-b-2 text-2xl font-extrabold dark:text-white">
+  <%=t('activerecord.attributes.service.add_cost')%>
+</h1>
 
 <div data-services--additionalCharge-target="myElement">
-    <template  data-services--additionalCharge-target="fields">
-        <div class="flex mt-8 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
-            <svg class="flex-shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20"> <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-            </svg>
-            <span class="sr-only">Danger</span>
-            <div>
-                <span class="font-medium">Erro ao adcionar o custo, verificar os campos:</span>
-                <ul class="mt-1.5 list-disc list-inside"></ul>
-            </div>
-        </div>
-    </template>
+  <template  data-services--additionalCharge-target="fields">
+    <div class="flex mt-8 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+      <svg class="flex-shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20"> <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+      </svg>
+      <span class="sr-only">Danger</span>
+      <div>
+        <span class="font-medium">
+          <%=t('activerecord.attributes.service.error_message_service.title_error_service')%>
+        </span>
+        <ul class="mt-1.5 list-disc list-inside"></ul>
+      </div>
+    </div>
+  </template>
 </div>
 
 <div >
-    <div class="mt-8 grid gap-6 mb-6 lg:grid-cols-7">
-
-        <div class="lg:col-span-2"
-            data-controller="flatpickr">
-            <%= label_tag :lauch_date, "Data", class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
-            <%= text_field_tag :lauch_date, nil, data: {"services--additionalCharge-target":"inputLauchDate", "flatpickr-target":"inputDate"}, class:"text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", autocomplete: "off" %>
-        </div>
-
-        <div class="lg:col-span-3 ">
-            <%= label_tag :release_description, "Descrição", class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
-            <%= text_field_tag :release_description, nil, data: {"services--additionalCharge-target":"inputReleaseDescription"}, class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", required: false %>
-        </div>
-
-        <div >
-            <%= label_tag :lauch_value, "Valor", class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
-            <%= text_field_tag :lauch_value, nil, data: {action:"services--additionalCharge#formatValue","services--additionalCharge-target":"inputLauchValue"}, class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", required: false %>
-        </div>
-
-        <div class="mt-7 mb-8 text-center grid ">
-            <%= link_to 'Adcionar', '#', data: { action: "click->services--additionalCharge#addCharge"}, class:"w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
-        </div>
+  <div class="mt-8 grid gap-6 mb-6 lg:grid-cols-7">
+    <div class="lg:col-span-2"
+      data-controller="flatpickr">
+      <%= label_tag :lauch_date, t('activerecord.attributes.service.label_input.date'), class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+      <%= text_field_tag :lauch_date, nil, data: {"services--additionalCharge-target":"inputLauchDate", "flatpickr-target":"inputDate"}, class:"text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", autocomplete: "off" %>
     </div>
 
-    <h1 class=" pb-3 border-b-2 text-2xl font-extrabold dark:text-white">Custos Adcionais</h1>
-    <div data-turbo-permanent data-services--additionalCharge-target="message" class="mt-8 font-medium text-gray-900 whitespace-nowrap dark:text-white" >Não há custos adcionais cadastrados.</div>
+    <div class="lg:col-span-3 ">
+      <%= label_tag :release_description, t('activerecord.attributes.service.label_input.description'), class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+      <%= text_field_tag :release_description, nil, data: {"services--additionalCharge-target":"inputReleaseDescription"}, class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", required: false %>
+    </div>
 
-    <div data-turbo-permanent class="mt-8 relative overflow-x-auto shadow-md sm:rounded-lg">
+    <div >
+      <%= label_tag :lauch_value, t('activerecord.attributes.service.label_input.amount'), class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+      <%= text_field_tag :lauch_value, nil, data: {action:"services--additionalCharge#formatValue","services--additionalCharge-target":"inputLauchValue"}, class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", required: false %>
+    </div>
 
-        <table data-services--additionalCharge-target="table" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400" >
-            <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                <tr>
-                    <th scope="col" class="px-6 py-3">Data</th>
-                    <th scope="col" class="px-6 py-3">Descrição</th>
-                    <th scope="col" class="px-6 py-3">Valor</th>
-                    <th scope="col" class="px-6 py-3 text-right">Ações</th>
-                </tr>
-            </thead>
+    <div class="mt-7 mb-8 text-center grid ">
+      <%= link_to t('activerecord.attributes.service.label_input.add'), '#', data: { action: "click->services--additionalCharge#addCharge"}, class:"w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
+    </div>
+  </div>
 
-            <tbody >
-                <% @service.additional_charges.each do |charge| %>
-                    <% unless charge.lauch_date.blank? && charge.release_description.blank? && charge.lauch_value.blank?  %>
-                        <tr  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"><%= I18n.l(charge.lauch_date, format: :default) %></th>
-                            <td class="release_description px-6 py-4"><%= charge.release_description %></td>
-                            <td class="lauch_value px-6 py-4"><%= number_to_currency(charge.lauch_value, unit: "R$ ", separator: ",", delimiter: ".") %></td>
-                            <td class="px-6 py-4 text-center">
-                            <%= hidden_field_tag 'service[additional_charges_attributes][][id]', charge.id %>
-                            <%= hidden_field_tag 'service[additional_charges_attributes][][lauch_date]', charge.lauch_date, class: 'lauch_date-input' %>
-                            <%= hidden_field_tag 'service[additional_charges_attributes][][release_description]', charge.release_description, class: 'release_description-input' %>
-                            <%= hidden_field_tag 'service[additional_charges_attributes][][lauch_value]', charge.lauch_value, class: 'lauch_value-input' %>
+  <h1 class=" pb-3 border-b-2 text-2xl font-extrabold dark:text-white">
+    <%=t('activerecord.attributes.service.additional_costs')%>
+  </h1>
+  <div data-turbo-permanent data-services--additionalCharge-target="message" class="mt-8 font-medium text-gray-900 whitespace-nowrap dark:text-white" >
+    <%=t('activerecord.attributes.service.no_cost')%>
+  </div>
 
-                            <% destroy_value = charge.marked_for_destruction? ? true : false %>
-                            <%= hidden_field_tag 'service[additional_charges_attributes][][_destroy]', destroy_value, class: 'destroy-input' %>
-                            <div class=" text-right">
-                                <button data-action="services--additionalCharge#deleteCharge"><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                                <path fill-rule="evenodd" d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/></svg></button>
-                                <button data-action="services--additionalCharge#editCharge"><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"/></svg>
-                                </button>
-                            </div>
-                            </td>
-                        </tr>
-                    <% end %>
-                <% end %>
-            </tbody>
-        </table>
+  <div data-turbo-permanent class="mt-8 relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table data-services--additionalCharge-target="table" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400" >
+      <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th scope="col" class="px-6 py-3">
+            <%=t('activerecord.attributes.service.label_input.date')%>
+          </th>
+          <th scope="col" class="px-6 py-3">
+            <%=t('activerecord.attributes.service.label_input.description')%>
+          </th>
+          <th scope="col" class="px-6 py-3">
+            <%=t('activerecord.attributes.service.label_input.amount')%>
+          </th>
+          <th scope="col" class="px-6 py-3 text-right">
+            <%=t('activerecord.attributes.service.label_input.action')%>
+          </th>
+        </tr>
+      </thead>
 
-        <template data-services--additionalCharge-target="template">
-
+      <tbody >
+        <% @service.additional_charges.each do |charge| %>
+          <% unless charge.lauch_date.blank? && charge.release_description.blank? && charge.lauch_value.blank?  %>
             <tr  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"></td>
-                <td class="release_description px-6 py-4"></td>
-                <td class="lauch_value px-6 py-4"></td>
+              <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"><%= I18n.l(charge.lauch_date, format: :default) %></th>
+              <td class="release_description px-6 py-4"><%= charge.release_description %></td>
+              <td class="lauch_value px-6 py-4"><%= number_to_currency(charge.lauch_value, unit: "R$ ", separator: ",", delimiter: ".") %></td>
+              <td class="px-6 py-4 text-center">
+              <%= hidden_field_tag 'service[additional_charges_attributes][][id]', charge.id %>
+              <%= hidden_field_tag 'service[additional_charges_attributes][][lauch_date]', charge.lauch_date, class: 'lauch_date-input' %>
+              <%= hidden_field_tag 'service[additional_charges_attributes][][release_description]', charge.release_description, class: 'release_description-input' %>
+              <%= hidden_field_tag 'service[additional_charges_attributes][][lauch_value]', charge.lauch_value, class: 'lauch_value-input' %>
 
-                <td class="px-6 py-4 text-center">
-                    <%= hidden_field_tag 'service[additional_charges_attributes][][lauch_date]', nil, class: 'lauch_date-input' %>
-                    <%= hidden_field_tag 'service[additional_charges_attributes][][release_description]', nil, class: 'release_description-input' %>
-                    <%= hidden_field_tag 'service[additional_charges_attributes][][lauch_value]', nil, class: 'lauch_value-input' %>
-                    <div class="text-right">
-                        <button data-action="services--additionalCharge#deleteCharge"><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                        <path fill-rule="evenodd" d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/></svg>
-                        </button>
-                        <button data-action="services--additionalCharge#editCharge"><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"/></svg>
-                        </button>
-                    </div>
-                </td>
+              <% destroy_value = charge.marked_for_destruction? ? true : false %>
+              <%= hidden_field_tag 'service[additional_charges_attributes][][_destroy]', destroy_value, class: 'destroy-input' %>
+              <div class=" text-right">
+                  <button data-action="services--additionalCharge#deleteCharge"><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                  <path fill-rule="evenodd" d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/></svg></button>
+                  <button data-action="services--additionalCharge#editCharge"><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"/></svg>
+                  </button>
+              </div>
+              </td>
             </tr>
-        </template>
-    </div>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
 
-    <div class="mt-8" > <span data-services--additionalCharge-target="total" class="text-lg font-medium text-gray-900 dark:text-white"> </span></div>
+      <template data-services--additionalCharge-target="template">
+
+          <tr  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+              <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"></td>
+              <td class="release_description px-6 py-4"></td>
+              <td class="lauch_value px-6 py-4"></td>
+
+              <td class="px-6 py-4 text-center">
+                  <%= hidden_field_tag 'service[additional_charges_attributes][][lauch_date]', nil, class: 'lauch_date-input' %>
+                  <%= hidden_field_tag 'service[additional_charges_attributes][][release_description]', nil, class: 'release_description-input' %>
+                  <%= hidden_field_tag 'service[additional_charges_attributes][][lauch_value]', nil, class: 'lauch_value-input' %>
+                  <div class="text-right">
+                      <button data-action="services--additionalCharge#deleteCharge"><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                      <path fill-rule="evenodd" d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/></svg>
+                      </button>
+                      <button data-action="services--additionalCharge#editCharge"><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"/></svg>
+                      </button>
+                  </div>
+              </td>
+          </tr>
+      </template>
+  </div>
+
+  <div class="mt-8" > <span data-services--additionalCharge-target="total" class="text-lg font-medium text-gray-900 dark:text-white"> </span></div>
 
 
 </div>

@@ -1,4 +1,6 @@
-<h1 class="mt-8 pb-3 border-b-2 text-2xl font-extrabold dark:text-white">Adcionar serviços</h1>
+<h1 class="mt-8 pb-3 border-b-2 text-2xl font-extrabold dark:text-white">
+  <%=t('activerecord.attributes.service.include_service')%>
+</h1>
 
 <div data-services--services-target="myElement">
   <template  data-services--services-target="fields">
@@ -8,7 +10,9 @@
       </svg>
       <span class="sr-only">Danger</span>
       <div>
-        <span class="font-medium">Erro ao adcionar o serviço, verificar os campos:</span>
+        <span class="font-medium">
+          <%=t('activerecord.attributes.service.error_message_service.title_error_service')%>
+        </span>
         <ul class="mt-1.5 list-disc list-inside"> </ul>
       </div>
     </div>
@@ -19,49 +23,65 @@
     <div class="mt-8 grid gap-6 mb-6 lg:grid-cols-8">
       <div class="col-span-2"
         data-controller="flatpickr">
-        <%= label_tag :service_date, "Data", class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+        <%= label_tag :service_date, t('activerecord.attributes.service.label_input.date'), class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
         <%= text_field_tag :service_date, nil, data: {"services--services-target":"inputServiceDate", "flatpickr-target":"inputDate"}, class:"text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", autocomplete: "off" %>
       </div>
 
       <div class="col-span-2 ">
-        <%= label_tag :list_service_id, "Serviços", class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+        <%= label_tag :list_service_id, t('activerecord.attributes.service.label_input.services'), class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
         <%= select_tag :list_service_id, options_from_collection_for_select(ListService.where(list_delete: false), :id, :service_name,), {data: {"services--services-target":"inputListServiceId"}, include_blank: true, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"} %>
       </div>
 
       <div>
-        <%= label_tag :amount, "Quantidade", class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+        <%= label_tag :amount, t('activerecord.attributes.service.label_input.quantity'), class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
         <%= number_field_tag :amount, nil, data: {action:"services--services#calcService", "services--services-target":"inputAmount"}, class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", required: false %>
       </div>
 
       <div>
-        <%= label_tag :value, "Valor", class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+        <%= label_tag :value, t('activerecord.attributes.service.label_input.amount'), class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
         <%= text_field_tag :value, nil, data: {action:"services--services#formatValue",  "services--services-target":"inputValue"}, class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", placeholder:"R$", required: false %>
       </div>
 
       <div>
-        <%= label_tag :total, "Total", class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+        <%= label_tag :total, t('activerecord.attributes.service.label_input.total'), class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
         <%= text_field_tag :total, nil, disabled:true, data: {"services--services-target":"inputTotal"}, class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", placeholder:"R$", required: false %>
       </div>
 
       <div class="mt-7 mb-8 text-center grid ">
-        <%= link_to 'Adcionar', '#', data: { action: "click->services--services#addService"}, class:"w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
+        <%= link_to t('activerecord.attributes.service.label_input.add'), '#', data: { action: "click->services--services#addService"}, class:"w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
       </div>
     </div>
 
-    <h1 class=" pb-3 border-b-2 text-2xl font-extrabold dark:text-white">Serviços adcionados</h1>
-    <div data-turbo-permanent data-services--services-target="message" class="mt-8 font-medium text-gray-900 whitespace-nowrap dark:text-white" >Não há serviços cadastrados.</div>
+    <h1 class=" pb-3 border-b-2 text-2xl font-extrabold dark:text-white">
+      <%=t('activerecord.attributes.service.added_services')%>
+    </h1>
+    <div data-turbo-permanent data-services--services-target="message" class="mt-8 font-medium text-gray-900 whitespace-nowrap dark:text-white" >
+      <%=t('activerecord.attributes.service.no_services')%>
+    </div>
 
     <div data-turbo-permanent class="mt-8 relative overflow-x-auto shadow-md sm:rounded-lg">
 
       <table data-services--services-target="table" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400" >
         <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
-              <th scope="col" class="px-6 py-3">Data</th>
-              <th scope="col" class="px-6 py-3">Serviço</th>
-              <th scope="col" class="px-6 py-3">Quantidade</th>
-              <th scope="col" class="px-6 py-3">Valor</th>
-              <th scope="col" class="px-6 py-3">Total</th>
-              <th scope="col" class="px-6 py-3 text-right">Ações</th>
+            <th scope="col" class="px-6 py-3">
+              <%=t('activerecord.attributes.service.label_input.date')%>
+            </th>
+            <th scope="col" class="px-6 py-3">
+              <%=t('activerecord.attributes.service.label_input.service')%>
+            </th>
+            <th scope="col" class="px-6 py-3">
+              <%=t('activerecord.attributes.service.label_input.quantity')%>
+            </th>
+            <th scope="col" class="px-6 py-3">
+              <%=t('activerecord.attributes.service.label_input.amount')%>
+            </th>
+            <th scope="col" class="px-6 py-3">
+              <%=t('activerecord.attributes.service.label_input.total')%>
+            </th>
+            <th scope="col" class="px-6 py-3 text-right">
+              <%=t('activerecord.attributes.service.label_input.action')%>
+            </th>
           </tr>
         </thead>
 

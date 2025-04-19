@@ -233,19 +233,19 @@ export default class extends Controller {
       if (!field.value) {
         switch (field) {
           case this.inputServiceDateTarget:
-            fieldNames.push('Data campo obrigatório')
+            fieldNames.push(window.translations.messageServiceDate)
             break
           case this.inputListServiceIdTarget:
-            fieldNames.push('Serviços campo obrigatório')
+            fieldNames.push(window.translations.messageServiceService)
             break
           case this.inputAmountTarget:
-            fieldNames.push('Quantidade campo obrigatório')
+            fieldNames.push(window.translations.messageServiceQuantity)
             break
           case this.inputValueTarget:
-            fieldNames.push('Valor campo obrigatório')
+            fieldNames.push(window.translations.messageServiceAmount)
             break
           case this.inputTotalTarget:
-            fieldNames.push('Total campo obrigatório')
+            fieldNames.push(window.translations.messageServiceTotal)
             break
         }
 
