@@ -1,16 +1,28 @@
 <% if @bills_with_due_info.empty? %>
-  <p class="mt-8 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center" >Não há dados para exibir.</p>
+  <p class="mt-8 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center" >
+    <%=t('activerecord.attributes.welcome.no_data_available')%>
+  </p>
 <% else %>
   <div id="clients">
     <div  class="h-92 border relative overflow-x-auto shadow-md sm:rounded-lg">
-      <h1 class="border-b bg-gray-50 dark:bg-gray-700 text-center text-xl font-bold text-gray-900 dark:text-white">Contas à pagar</h1>
+      <h1 class="border-b bg-gray-50 dark:bg-gray-700 text-center text-xl font-bold text-gray-900 dark:text-white">
+        <%=t('activerecord.attributes.welcome.accounts_payable')%>
+      </h1>
       <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400" >
         <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
-            <th scope="col" class="px-6 py-3"> Descrição</th>
-            <th scope="col" class="px-6 py-3 text-center">Data de vencimento</th>
-            <th scope="col" class="px-6 py-3 text-center">Dias para vencimento</th>
-            <th scope="col" class="px-6 py-3 text-center">Valor</th>
+            <th scope="col" class="px-6 py-3">
+              <%=t('activerecord.attributes.welcome.description')%>
+            </th>
+            <th scope="col" class="px-6 py-3 text-center">
+              <%=t('activerecord.attributes.welcome.due_date')%>
+            </th>
+            <th scope="col" class="px-6 py-3 text-center">
+              <%=t('activerecord.attributes.welcome.days_until_due')%>
+            </th>
+            <th scope="col" class="px-6 py-3 text-center">
+              <%=t('activerecord.attributes.welcome.amount')%>
+            </th>
 
           </tr>
         </thead>
@@ -26,7 +38,7 @@
           <% end %>
           <tr class="bg-gray-200 font-bold">
             <th scope="row" class="px-6 py-4 text-gray-900 whitespace-nowrap">
-              Total de contas à pagar
+              <%=t('activerecord.attributes.welcome.total_accounts')%>
             </th>
             <td colspan="3" class="text-right px-6 py-4">
               <%= number_to_currency(@total_payable) %>

@@ -238,6 +238,34 @@ en:
         lauch_date: "Data de recebimento"
         lauch_value: "Valor recebido"
         release_description: "Descrição do recebimento"
+      welcome:
+        balance: Balance
+        amount_due: Amount Due
+        accounts_payable: Accounts Payable
+        paid_accounts: Paid Accounts
+        record_for: Record for
+        select_month: Select Mounth
+        select_year: Select Year
+        inflow_outflow: Inflow and Outflow
+        cash_flow: Cash Flow
+        payments_received: Payments Received
+        operating_cost: Operating Cost
+        additional_cost: Additional Cost
+        profit: Profit
+        due_date: Due Date
+        days_until_due: Days Until Due
+        amount: Amount
+        expense_breakdown: Expense Breakdown
+        total_accounts: Total Accounts Payable
+        cash_inflows: Cash Inflows
+        cash_outflows: Cash Outflows
+        days: Days
+        no_data_available: No data available
+        description: Description
+        search: Search
+        clear: Clear
+
+
 
 
 
