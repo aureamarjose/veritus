@@ -54,7 +54,7 @@ export default class extends Controller {
         } else if (this.origin == "service") {
           Turbo.renderStreamMessage(data);
           Toastify({
-            text: "Serviço apagado com sucesso",
+            text: window.translations.serviceDelete,
             duration: 3000,
             style: {
               background: "#22c55e",
@@ -63,7 +63,7 @@ export default class extends Controller {
         } else if (this.origin == "list_service") {
           Turbo.renderStreamMessage(data);
           Toastify({
-            text: "Serviço apagado com sucesso",
+            text: window.translations.serviceDelete,
             duration: 3000,
             style: {
               background: "#22c55e",
@@ -112,7 +112,7 @@ export default class extends Controller {
         }).showToast();
       } else if (this.origin == "list_service") {
         Toastify({
-          text: "Serviço não pode ser apagado.",
+          text: window.translations.noDeleteService,
           duration: 3000,
           style: {
             background: "red",

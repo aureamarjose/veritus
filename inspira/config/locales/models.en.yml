@@ -36,8 +36,8 @@ en:
         one: Fluxo de Caixa
         other: Fluxos de Caixa
       list_service:
-        one: Lista de Serviços
-        other: Listas de Serviços
+        one: Service
+        other:  Services
       receiveds:
         one: Recebido
         other: Recebidos
@@ -163,9 +163,11 @@ en:
         payment: "Payments Received"
         add_payment: " Add Received Payment "
         no_payment: "No payments received have been registered."
+        service_details: "Service Details"
+        edit_service: "Edit Service"
         action:
-          display_services: "Display services"
-          list_services: "List services"
+          view_services: "View Services"
+          list_services: "Service List"
           new_service: "New Service"
           action: "Action"
           back:
@@ -202,6 +204,12 @@ en:
           total: "Total is required"
           description: "Description is required"
           add_cost_service: "Add Cost to the Service"
+        table:
+          total_value_services: " Total Value of Services:"
+          additional_costs: "Additional Costs:"
+          operating_costs: "Operating Costs:"
+          amount_due: "Amount Due:"
+          amount_received: "Amount Received:"
       bills_to_pay:
         description: "Descrição"
         expiration_date: "Data de vencimento"
@@ -218,7 +226,14 @@ en:
         lauch_value: "Valor do Lançamento"
         lauch_description: "Descrição do Lançamento"
       list_service:
-        service_name: "Nome do Serviço"
+        service_name: "Service Name"
+        service_list: "Service List"
+        new_service: "New Service"
+        edit_service: "Edit Service"
+        no_service: "No services have been registered."
+        table:
+          description: "Description"
+          action: "Action"
       receiveds:
         lauch_date: "Data de recebimento"
         lauch_value: "Valor recebido"

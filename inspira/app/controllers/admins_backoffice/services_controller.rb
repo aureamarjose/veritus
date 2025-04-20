@@ -77,7 +77,7 @@ module AdminsBackoffice
       respond_to do |format|
         if @service.save
           format.html do
-            redirect_to(admins_backoffice_services_path, notice: "O serviço foi criado com sucesso.")
+            redirect_to(admins_backoffice_services_path, notice: I18n.t('activerecord.message.success',  model: Service.model_name.human))
           end
           format.json { render(:show, status: :created, location: @service) }
         else
@@ -93,7 +93,7 @@ module AdminsBackoffice
 
       respond_to do |format|
         if @service.update(service_params)
-          format.html { redirect_to(admins_backoffice_services_path, notice: "O serviço foi atualizado com sucesso.") }
+          format.html { redirect_to(admins_backoffice_services_path, notice: I18n.t('activerecord.message.update',  model: Service.model_name.human)) }
           format.json { render(:show, status: :ok, location: @service) }
         else
           format.html { render("services/edit", status: :unprocessable_entity) }

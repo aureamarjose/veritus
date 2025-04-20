@@ -37,7 +37,7 @@ module AdminsBackoffice
       respond_to do |format|
         if @list_service.save
           format.html do
-            redirect_to(admins_backoffice_list_services_path, notice: "Serviço criado com sucesso.")
+            redirect_to(admins_backoffice_list_services_path, notice: I18n.t('activerecord.message.success',  model: ListService.model_name.human))
           end
           format.json { render(:show, status: :created, location: @list_service) }
         else
@@ -59,7 +59,7 @@ module AdminsBackoffice
           new_service = ListService.new(new_service_params)
 
           if new_service.save
-            format.html { redirect_to(admins_backoffice_list_services_path, notice: "Serviço atualizado com sucesso.") }
+            format.html { redirect_to(admins_backoffice_list_services_path, notice: I18n.t('activerecord.message.update',  model: ListService.model_name.human)) }
             format.json { render(:show, status: :ok, location: new_service) }
           else
             # Se não conseguir salvar o novo serviço, renderiza a página de edição com os erros
@@ -81,12 +81,6 @@ module AdminsBackoffice
 
         respond_to do |format|
           format.turbo_stream { render(turbo_stream: turbo_stream.remove("list_service_#{params[:id]}")) }
-          format.html do
-            redirect_to(
-              admins_backoffice_list_services_path,
-              notice: "As categorias contas a pagar foram exluidas com sucesso.",
-            )
-          end
           format.json { head(:no_content) }
         end
       end

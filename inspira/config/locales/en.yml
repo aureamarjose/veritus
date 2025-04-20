@@ -6,6 +6,7 @@ en:
       update: "%{model} has been updated successfully."
       delete: "%{model} has been deleted successfully."
       confirm_delete: "Are you sure you want to delete?"
+      no_delete: "%{model} cannot be deleted."
     action:
       confirm: "Confirm"
       cancel: "Cancel"

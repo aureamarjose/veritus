@@ -100,7 +100,7 @@
                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownLargeButton2">
                       <li>
                         <%= link_to admins_backoffice_services_path, data: {turbo_stream: true}, class: "block px-4 py-2 hover:bg-blue-700 hover:text-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" do %>
-                        <%=t('activerecord.attributes.service.action.display_services')%>
+                        <%=t('activerecord.attributes.service.action.view_services')%>
                         <% end %>
                       </li>
                       <li>
@@ -143,7 +143,10 @@
       cepRequired: "<%= I18n.t('activerecord.attributes.address.validation.cep_required') %>",
       numberRequired: "<%= I18n.t('activerecord.attributes.address.validation.number_required') %>",
       ufRequired: "<%= I18n.t('activerecord.attributes.address.validation.uf_required') %>",
-      clientDelete: "<%=I18n.t('activerecord.message.delete', model: Client)%>",
+      clientDelete: "<%=I18n.t('activerecord.message.delete', model: Client.model_name.human)%>",
+      serviceDelete: "<%=I18n.t('activerecord.message.delete', model: Service.model_name.human)%>",
+      serviceListDelete: "<%=I18n.t('activerecord.message.delete', model: ListService.model_name.human)%>",
+      noDeleteService: "<%=I18n.t('activerecord.message.no_delete', model: ListService.model_name.human)%>",
       messageServiceDate: "<%=I18n.t('activerecord.attributes.service.error_message_service.date')%>",
       messageServiceService: "<%=I18n.t('activerecord.attributes.service.error_message_service.service')%>",
       messageServiceQuantity: "<%=I18n.t('activerecord.attributes.service.error_message_service.quantity')%>",
