@@ -23,7 +23,7 @@ module Inspira
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = "America/Caracas"
+    config.time_zone = "America/Caracas"
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end

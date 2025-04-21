@@ -9,12 +9,12 @@ default: &default
 
 development:
   <<: *default
-  database: <%= ENV.fetch("DATABASE_NAME") { "inspira_development" } %>
+  database: <%= ENV.fetch("DATABASE_NAME") { "veritus_development" } %>
 
 test:
   <<: *default
-  database: <%= ENV.fetch("DATABASE_NAME") { "inspira_test" } %>
+  database: <%= ENV.fetch("DATABASE_NAME") { "veritus_test" } %>
 
 production:
   <<: *default
-  database: <%= ENV.fetch("DATABASE_NAME") { "inspira_production" } %>
+  database: <%= ENV.fetch("DATABASE_NAME") { "veritus_production" } %>

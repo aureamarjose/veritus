@@ -33,7 +33,7 @@
               <td class="px-6 py-4"><%= bills_to_pay["description"] %></td>
               <td class="px-6 py-4 text-center"><%= I18n.l(bills_to_pay["expiration_date"], format: :default) %></td>
               <td class="px-6 py-4 text-center"><%=  bills_to_pay["expiration"] %></td>
-              <td class="px-6 py-4 text-center"><%= number_to_currency(bills_to_pay["value"]) %></td>
+              <td class="px-6 py-4 text-center"><%= number_to_currency(bills_to_pay["value"], unit: "R$ ") %></td>
             </tr>
           <% end %>
           <tr class="bg-gray-200 font-bold">
@@ -41,7 +41,7 @@
               <%=t('activerecord.attributes.welcome.total_accounts')%>
             </th>
             <td colspan="3" class="text-right px-6 py-4">
-              <%= number_to_currency(@total_payable) %>
+              <%= number_to_currency(@total_payable, unit: "R$ ") %>
             </td>
           </tr>
         </tbody>

@@ -9,7 +9,7 @@ namespace :dev_bills_to_pay do
       current_time = tz.to_local(Time.current)
       current_date = current_time.to_date
 
-      12.times do |i|
+      24.times do |i|
         is_current_or_previous_month = i == 0 || i == 1
 
         start_date = (current_date - i.months).change(day: 9)
@@ -25,7 +25,7 @@ namespace :dev_bills_to_pay do
         }
       end
 
-      12.times do |i|
+      24.times do |i|
         is_current_or_previous_month = i == 0 || i == 1
 
         start_date = (current_date - i.months).change(day: 3)
@@ -41,7 +41,7 @@ namespace :dev_bills_to_pay do
         }
       end
 
-      12.times do |i|
+      24.times do |i|
         is_current_or_previous_month = i == 0 || i == 1
 
         start_date = (current_date - i.months).change(day: 10)
@@ -57,7 +57,7 @@ namespace :dev_bills_to_pay do
         }
       end
 
-      12.times do |i|
+      24.times do |i|
         is_current_or_previous_month = i == 0 || i == 1
 
         start_date = (current_date - i.months).change(day: 15)
@@ -73,7 +73,7 @@ namespace :dev_bills_to_pay do
         }
       end
 
-      12.times do |i|
+      24.times do |i|
         is_current_or_previous_month = i == 0 || i == 1
 
         start_date = (current_date - i.months).change(day: 20)

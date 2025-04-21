@@ -86,15 +86,15 @@ module AdminsBackoffice
       @start_date = Date.new(@year, @month, 1)
       @end_date = @start_date.end_of_month
 
-      start_time = @start_date.to_time
+      start_time = @start_date.to_time.to_time.utc
 
       # Retornar o mês atual e o ano atual formatados
-      @current_date_format = I18n.l(start_time, format: :month_year, locale: :"pt-BR")
+      @current_date_format = I18n.l(start_time, format: :month_year)
 
       # Valor Recebido agrupado por dia
       received = Received.where(lauch_date: @start_date..@end_date).group_by_day(
         :lauch_date,
-        format: "%d-%m-%Y",
+        format: I18n.t('time.formats.date'),
       ).sum(:lauch_value)
 
       # Filtrar valores maiores que 0
@@ -107,7 +107,7 @@ module AdminsBackoffice
         source_model: "cash_flow",
       ).group_by_day(
         :lauch_date,
-        format: "%d-%m-%Y",
+        format: I18n.t('time.formats.date'),
       ).sum(:lauch_value)
 
       # Filtrar valores maiores que 0
@@ -119,7 +119,7 @@ module AdminsBackoffice
         lauch_type: "Saída",
       ).group_by_day(
         :lauch_date,
-        format: "%d-%m-%Y",
+        format: I18n.t('time.formats.date'),
       ).sum(:lauch_value)
 
       # saídas de caixa
@@ -148,7 +148,7 @@ module AdminsBackoffice
       if cash_outflows.length > 0 || cash_entries.length > 0
         @cash_flow = cash_flow_combination.sort_by do |group|
           if group[:data].present? && group[:data].first.present?
-            Date.strptime(group[:data].first.first, "%d-%m-%Y")
+            Date.strptime(group[:data].first.first, I18n.t('time.formats.date'))
           else
             Date.today
           end
@@ -163,6 +163,7 @@ module AdminsBackoffice
         expiration_date: @start_date..@end_date,
         status: false,
       ).order(expiration_date: :asc)
+      puts "----------------- bills_to_pays#{@bills_to_pays.inspect}"
 
       # contas à pagar agrupado por mês
       @bills = BillsToPay.joins(:categories_accounts_payable).where(
@@ -182,6 +183,8 @@ module AdminsBackoffice
         (value / total_value * 100).round(2)
       end
 
+      puts "---------------------- bills_percentages #{@bills_percentages}"
+
       # Nova hash para armazenar os resultados
       @bills_with_due_info = []
       # Inicializa o total a pagar
@@ -192,9 +195,11 @@ module AdminsBackoffice
         days_until_due = (expiration_date - current_date).to_i
 
         due_info = if days_until_due > 0
-          "Vence daqui a #{days_until_due} dias"
+          I18n.t('activerecord.attributes.welcome.day.due_in', count: days_until_due)
+        elsif days_until_due === 0
+          I18n.t('activerecord.attributes.welcome.day.due_today')
         else
-          "Venceu há #{days_until_due.abs} dias"
+          I18n.t('activerecord.attributes.welcome.day.overdue', count: days_until_due.abs)
         end
 
         # Adiciona a informação de vencimento ao hash de atributos do bill
@@ -271,14 +276,14 @@ module AdminsBackoffice
 
       # Estrutura de dados do faturamento
       @billing = {
-        "Recebimentos": previous_month_received,
-        "Custo Fixo": fixed_costs,
-        "Custo Variavel": variable_costs,
-        "Custo Operacional": previous_month_operational_costs,
-        "Custo Adcional": previous_month_additional_charges,
-        "Lucro": previous_month_profit,
-        "Outras Entradas": other_entries,
-        "Saldo": @balance_record,
+        I18n.t('activerecord.attributes.welcome.payments_received') => previous_month_received,
+        I18n.t('activerecord.attributes.welcome.fixed_cost') => fixed_costs,
+        I18n.t('activerecord.attributes.welcome.variable_cost') => variable_costs,
+        I18n.t('activerecord.attributes.welcome.operating_cost') => previous_month_operational_costs,
+        I18n.t('activerecord.attributes.welcome.additional_cost') => previous_month_additional_charges,
+        I18n.t('activerecord.attributes.welcome.profit') => previous_month_profit,
+        I18n.t('activerecord.attributes.welcome.other_inflows') => other_entries,
+        I18n.t('activerecord.attributes.welcome.balance') => @balance_record,
       }
 
       # Filtrar valores diferentes de 0
@@ -352,20 +357,11 @@ module AdminsBackoffice
 
     # meses
     def months_records
-      @months_records = [
-        ["Janeiro", 1],
-        ["Fevereiro", 2],
-        ["Março", 3],
-        ["Abril", 4],
-        ["Maio", 5],
-        ["Junho", 6],
-        ["Julho", 7],
-        ["Agosto", 8],
-        ["Setembro", 9],
-        ["Outubro", 10],
-        ["Novembro", 11],
-        ["Dezembro", 12],
-      ]
+      month_names = I18n.t('date.month_names')
+      @months_records = month_names.each_with_index.map do |month, index|
+        next if month.nil?
+        [month, index]
+      end.compact
     end
   end
 end

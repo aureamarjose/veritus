@@ -243,15 +243,18 @@ en:
         amount_due: Amount Due
         accounts_payable: Accounts Payable
         paid_accounts: Paid Accounts
-        record_for: Record for
+        record_for: Record for %{date}
         select_month: Select Mounth
         select_year: Select Year
         inflow_outflow: Inflow and Outflow
         cash_flow: Cash Flow
         payments_received: Payments Received
+        fixed_cost: Fixed Cost
+        variable_cost: Variable Cost
         operating_cost: Operating Cost
         additional_cost: Additional Cost
         profit: Profit
+        other_inflows: Other Inflows
         due_date: Due Date
         days_until_due: Days Until Due
         amount: Amount
@@ -264,6 +267,15 @@ en:
         description: Description
         search: Search
         clear: Clear
+        home: Home
+        day:
+          due_in:
+            one:  Due in %{count} day
+            other: Due in %{count} days
+          overdue:
+            one:  Overdue by %{count} day
+            other: Overdue by %{count} days
+          due_today: Due today
 
 
 

@@ -30,7 +30,7 @@
     </a>
   </div>
 
-  <h1 class="mt-10 text-center pb-3 border-b-4 text-3xl font-extrabold dark:text-white"><%=t("activerecord.attributes.welcome.record_for #{@current_date_format}") %></h1>
+  <h1 class="mt-10 text-center pb-3 border-b-4 text-3xl font-extrabold dark:text-white"><%=t("activerecord.attributes.welcome.record_for",date: @current_date_format) %></h1>
 
   <%=render "welcome/filter_date"%>
 

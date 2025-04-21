@@ -14,3 +14,27 @@ en:
     pagination:
       previous: "Previous"
       next: "Next"
+  date:
+    month_names:
+    -
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+  time:
+    am: am
+    formats:
+      default: "%a, %d de %B de %Y, %H:%M:%S %z"
+      long: "%d de %B de %Y, %H:%M"
+      short: "%d de %B, %H:%M"
+      month_year: "%B %Y"
+      date: "%Y-%m-%d"
+    pm: pm
