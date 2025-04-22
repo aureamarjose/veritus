@@ -44,15 +44,9 @@ en:
 
     attributes:
       admin:
-        name: "Nome"
-        email: "E-mail"
-        password: "Senha"
-        password_confirmation: "Confirmação de Senha"
-        characters minimum: "Mínimo de 6 caracteres"
-        remember_me: "Lembrar-me"
-        created_at: "Criado em"
-        updated_at: "Atualizado em"
-        current_password: "Senha Atual"
+        title: Log in to your account
+        email: E-mail
+        login: Login
       user:
         name: "Nome"
         email: "E-mail"
@@ -276,6 +270,34 @@ en:
             one:  Overdue by %{count} day
             other: Overdue by %{count} days
           due_today: Due today
+      invoicing:
+        revenue: Revenue
+        services: Services
+        revenue_for: Revenue for %{year}
+        yearly_revenue: Yearly revenue
+        opening_balance: Opening balance
+        fixed_cost: Fixed cost
+        variable_cost: Variable cost
+        operating_cost: Operating cost
+        additional_cost: Additional cost
+        profit: Profit
+        closing_balance: Closing balance
+        net_profit: Net profit
+        revenue_profit: Revenue and Net Profit
+        months: Months
+        profit_costs: Breakdown of Profit and Costs
+        amount: Amount
+        percent: Percent
+        quantity: Quantity
+        gross_amount: Gross amount
+        average_value: Average value
+        service_composition: Service Composition
+        no_data_available: No data available
+        services_performed: Services performed in %{year}
+
+
+
+
 
 
 

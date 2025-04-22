@@ -2,7 +2,7 @@
   <div class="grid gap-6 mb-6 lg:grid-cols-6">
     <div>
       <%= form_with url: admins_backoffice_invoicings_path, method: :get, data:{controller: "invoicing--billingYear"} do %>
-        <%= label_tag :year, "Faturamento ano:", class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+        <%= label_tag :year, t('activerecord.attributes.invoicing.yearly_revenue'), class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
         <%= select_tag :year, options_for_select(@years_records, params[:year] || @current_year), data:{action:"input->invoicing--billingYear#searchYear"}, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  %>
       <% end %>
     </div>
@@ -13,13 +13,13 @@
       <ul class="flex flex-wrap -mb-px">
         <li class="me-2">
           <%= link_to "", id:"link1", data: {turbo_stream: true, action:"invoicing--tabs#showPage", "invoicing--tabs-target":"link"}, class: "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" do %>
-          Faturamento |
+            <%=t('activerecord.attributes.invoicing.revenue')%> |
           <% end %>
 
         </li>
         <li class="me-2">
           <%= link_to "", id:"link2", data: {turbo_stream: true, action:"invoicing--tabs#showPage", "invoicing--tabs-target":"link"}, class: "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" do %>
-          Seviços |
+            <%=t('activerecord.attributes.invoicing.services')%> |
           <% end %>
         </li>
       </ul>

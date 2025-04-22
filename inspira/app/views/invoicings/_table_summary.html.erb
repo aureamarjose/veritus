@@ -3,44 +3,60 @@
     <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
       <tr>
         <th scope="col" class="px-6 py-3"></th>
-        <th scope="col" class="px-6 py-3 text-center">Valor</th>
-        <th scope="col" class="px-6 py-3 text-center">Percentual</th>
+        <th scope="col" class="px-6 py-3 text-center">
+          <%= t('activerecord.attributes.invoicing.amount')%>
+        </th>
+        <th scope="col" class="px-6 py-3 text-center">
+          <%= t('activerecord.attributes.invoicing.percent')%>
+        </th>
       </tr>
     </thead>
 
     <tbody >
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-        <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">1. Faturamento</th>
+        <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          1. <%=t('activerecord.attributes.invoicing.revenue')%>
+        </th>
           <td class="text-center release_description px-6 py-4"> <%= @received_year.to_f.zero? ? "-" : number_to_currency(@received_year, separator: ",", delimiter: ".") %>
           </td>
           <td class="text-center release_description px-6 py-4"> <%= @received_year.to_f.zero? || @profit_year.to_f < 0 ? "-" : "100%" %></td>
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-        <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> 2. Custo fixo</th>
+        <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          2. <%=t('activerecord.attributes.invoicing.fixed_cost')%>
+        </th>
           <td class="text-center release_description px-6 py-4"> <%=  @fixed_costs_year.to_f.zero? ? "-" : number_to_currency(@fixed_costs_year, separator: ",", delimiter: ".") %>
           </td>
           <td class="text-center release_description px-6 py-4"><%= @fixed_cost_percentage.to_f.zero? || @profit_year.to_f < 0 ? "-" : number_to_percentage(@fixed_cost_percentage, precision: 2, separator: ",", delimiter: ".") %> </td>
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-        <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> 3. Custo variável</th>
+        <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          3. <%=t('activerecord.attributes.invoicing.variable_cost')%>
+        </th>
           <td class="text-center release_description px-6 py-4"> <%=  @variable_costs_year.to_f.zero? ? "-" : number_to_currency(@variable_costs_year, separator: ",", delimiter: ".") %>
           </td>
           <td class="text-center release_description px-6 py-4"><%= @variable_cost_percentage.to_f.zero? || @profit_year.to_f < 0 ? "-" : number_to_percentage(@variable_cost_percentage, precision: 2, separator: ",", delimiter: ".") %> </td>
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-        <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> 4. Custo operacional</th>
+        <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          4. <%=t('activerecord.attributes.invoicing.operating_cost')%>
+        </th>
           <td class="text-center release_description px-6 py-4"> <%= @operational_costs_year.to_f.zero? ? "-" : number_to_currency(@operational_costs_year, separator: ",", delimiter: ".") %>
           </td>
           <td class="text-center release_description px-6 py-4"><%= @operational_cost_percentage.to_f.zero? || @profit_year.to_f < 0 ? "-" : number_to_percentage(@operational_cost_percentage, precision: 2, separator: ",", delimiter: ".") %> </td>
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-        <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> 5. Custo adcional</th>
+        <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          5. <%=t('activerecord.attributes.invoicing.additional_cost')%>
+        </th>
           <td class="text-center release_description px-6 py-4"> <%= @additional_charges_year.to_f.zero? ? "-" : number_to_currency(@additional_charges_year, separator: ",", delimiter: ".") %>
           </td>
           <td class="text-center release_description px-6 py-4"><%= @additional_charge_percentage.to_f.zero? || @profit_year.to_f < 0 ? "-" : number_to_percentage(@additional_charge_percentage, precision: 2, separator: ",", delimiter: ".") %> </td>
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-        <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> 6. Lucro</th>
+        <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          6. <%=t('activerecord.attributes.invoicing.profit')%>
+        </th>
           <td class="text-center release_description px-6 py-4"> <%= @profit_year.to_f.zero? ? "-" : number_to_currency(@profit_year, separator: ",", delimiter: ".") %>
           </td>
           <td class="text-center release_description px-6 py-4">

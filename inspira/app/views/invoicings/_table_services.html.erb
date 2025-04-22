@@ -2,13 +2,27 @@
   <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400" >
     <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
       <tr>
-        <th scope="col" class="px-6 py-3">Serviço</th>
-        <th scope="col" class="px-6 py-3 text-center">Quantidade</th>
-        <th scope="col" class="px-6 py-3 text-center">Valor Bruto</th>
-        <th scope="col" class="px-6 py-3 text-center">Média do Valor</th>
-        <th scope="col" class="px-6 py-3 text-center">Custo Operacional</th>
-        <th scope="col" class="px-6 py-3 text-center">Valor Líquido</th>
-        <th scope="col" class="px-6 py-3 text-center">Percentual</th>
+        <th scope="col" class="px-6 py-3">
+          <%=t('activerecord.attributes.invoicing.services')%>
+        </th>
+        <th scope="col" class="px-6 py-3 text-center">
+          <%=t('activerecord.attributes.invoicing.quantity')%>
+        </th>
+        <th scope="col" class="px-6 py-3 text-center">
+          <%=t('activerecord.attributes.invoicing.gross_amount')%>
+        </th>
+        <th scope="col" class="px-6 py-3 text-center">
+          <%=t('activerecord.attributes.invoicing.average_value')%>
+        </th>
+        <th scope="col" class="px-6 py-3 text-center">
+          <%=t('activerecord.attributes.invoicing.fixed_cost')%>
+        </th>
+        <th scope="col" class="px-6 py-3 text-center">
+          <%=t('activerecord.attributes.invoicing.net_profit')%>
+        </th>
+        <th scope="col" class="px-6 py-3 text-center">
+          <%=t('activerecord.attributes.invoicing.percent')%>
+        </th>
       </tr>
     </thead>
 
@@ -22,19 +36,19 @@
             <%= service.service_count %>
           </td>
           <td class="text-center px-6 py-4">
-            <%= number_to_currency(service.total_sum, precision: 2, separator: ",", delimiter: ".") %>
+            <%= number_to_currency(service.total_sum, unit: "R$", precision: 2, separator: ",", delimiter: ".") %>
           </td>
           <td class="text-center px-6 py-4">
-            <%= number_to_currency(service.total_sum / service.service_count, precision: 2, separator: ",", delimiter: ".") %>
+            <%= number_to_currency(service.total_sum / service.service_count, unit: "R$",precision: 2, separator: ",", delimiter: ".") %>
           </td>
           <td class="text-center px-6 py-4">
-            <%=number_to_currency(service.operational_cost, precision: 2, separator: ",", delimiter: ".") %>
+            <%=number_to_currency(service.operational_cost, unit: "R$", precision: 2, separator: ",", delimiter: ".") %>
           </td>
           <td class="text-center px-6 py-4">
-            <%=number_to_currency(service.net_value, precision: 2, separator: ",", delimiter: ".") %>
+            <%=number_to_currency(service.net_value, unit: "R$", precision: 2, separator: ",", delimiter: ".") %>
           </td>
           <td class="text-center px-6 py-4">
-            <%=number_to_percentage(service.percentage_of_total, precision: 2, separator: ",", delimiter: ".") %>
+            <%=number_to_percentage(service.percentage_of_total, unit: "R$", precision: 2, separator: ",", delimiter: ".") %>
           </td>
         </tr>
       <% end %>
@@ -46,16 +60,16 @@
           <%= @total_service_count %>
         </td>
         <td class="text-center px-6 py-4">
-          <%= number_to_currency(@total_sum, separator: ",", delimiter: ".") %>
+          <%= number_to_currency(@total_sum, unit: "R$", separator: ",", delimiter: ".") %>
         </td>
         <td class="text-center px-6 py-4">
-          <%= @total_sum.zero? ? 'R$ 0,00' : number_to_currency(@total_sum / @total_service_count, precision: 2, separator: ",", delimiter: ".") %>
+          <%= @total_sum.zero? ? 'R$ 0,00' : number_to_currency(@total_sum / @total_service_count, unit: "R$", precision: 2, separator: ",", delimiter: ".") %>
         </td>
         <td class="text-center px-6 py-4">
-          <%= number_to_currency(@total_operational_cost, precision: 2, separator: ",", delimiter: ".") %>
+          <%= number_to_currency(@total_operational_cost, unit: "R$", precision: 2, separator: ",", delimiter: ".") %>
         </td>
         <td class="text-center px-6 py-4">
-          <%= number_to_currency(@total_net_value, precision: 2, separator: ",", delimiter: ".") %>
+          <%= number_to_currency(@total_net_value, unit: "R$", precision: 2, separator: ",", delimiter: ".") %>
         </td>
         <td class="text-center px-6 py-4">
           100%

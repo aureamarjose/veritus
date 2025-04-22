@@ -1,4 +1,6 @@
-<h1 class="text-center pb-3 border-b-4 text-4xl font-extrabold dark:text-white"><%="Serviços Excutados no Ano #{@year}"%></h1>
+<h1 class="text-center pb-3 border-b-4 text-4xl font-extrabold dark:text-white">
+  <%=t('activerecord.attributes.invoicing.services_performed', year:@year)%>
+</h1>
 <%= render "invoicings/table_services"%>
 
 <hr class="mt-8 border-b-4">
@@ -10,8 +12,8 @@
       round: 2,
       zeros: true,
       suffix: " %",
-      title: "Composição dos Serviços",
+      title: t('activerecord.attributes.invoicing.service_composition'),
       height: "500px",
-      empty: "Não há dados para exibir"
+      empty: t('activerecord.attributes.invoicing.no_data_available')
     %>
   </div>

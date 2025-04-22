@@ -3,90 +3,99 @@
     <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
       <tr>
         <th scope="col" class="px-6 py-3"></th>
-        <th scope="col" class="px-6 py-3 text-center">Janeiro</th>
-        <th scope="col" class="px-6 py-3 text-center">Fevereiro</th>
-        <th scope="col" class="px-6 py-3 text-center">Março</th>
-        <th scope="col" class="px-6 py-3 text-center">Abril</th>
-        <th scope="col" class="px-6 py-3 text-center">Maio</th>
-        <th scope="col" class="px-6 py-3 text-center">Junho</th>
-        <th scope="col" class="px-6 py-3 text-center">Julho</th>
-        <th scope="col" class="px-6 py-3 text-center">Agosto</th>
-        <th scope="col" class="px-6 py-3 text-center">Setembro</th>
-        <th scope="col" class="px-6 py-3 text-center">Outubro</th>
-        <th scope="col" class="px-6 py-3 text-center">Novembro</th>
-        <th scope="col" class="px-6 py-3 text-right">Dezembro</th>
+        <%I18n.t('date.month_names').compact.each_with_index do |month|%>
+          <th scope="col" class="px-6 py-3 text-center">
+            <%= month %>
+          </th>
+        <%end%>
       </tr>
     </thead>
 
     <tbody >
       <tr  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-        <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> 1. Saldo inicial</th>
-        <% meses_pt = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"] %>
+        <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          1. <%=t('activerecord.attributes.invoicing.opening_balance')%>
+        </th>
+        <% month_en = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] %>
         <% (1..12).each do |month| %>
-          <% formatted_month = "#{@year}-#{meses_pt[month - 1]}" %>
+          <% formatted_month = "#{@year}-#{month_en[month - 1]}" %>
           <td class="text-center release_description px-6 py-4">
             <%= @inicial_balance[formatted_month].to_f.zero? ? "-" : number_to_currency(@inicial_balance[formatted_month], unit: "R$ ", separator: ",", delimiter: ".") %>
           </td>
         <% end %>
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-        <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">2. Faturamento</th>
+        <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          2. <%=t('activerecord.attributes.invoicing.revenue')%>
+        </th>
         <% (1..12).each do |month| %>
-          <% formatted_month = "#{@year}-#{meses_pt[month - 1]}" %>
+          <% formatted_month = "#{@year}-#{month_en[month - 1]}" %>
           <td class="text-center release_description px-6 py-4">
             <%= number_to_currency(@received[formatted_month], unit: "R$ ", separator: ",", delimiter: ".") || "-" %>
           </td>
         <% end %>
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-        <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> 3. Custo fixo</th>
+        <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          3. <%=t('activerecord.attributes.invoicing.fixed_cost')%>
+        </th>
         <% (1..12).each do |month| %>
-          <% formatted_month = "#{@year}-#{meses_pt[month - 1]}" %>
+          <% formatted_month = "#{@year}-#{month_en[month - 1]}" %>
           <td class="text-center release_description px-6 py-4">
             <%= number_to_currency(@fixed_costs[formatted_month], unit: "R$ ", separator: ",", delimiter: ".") || "-" %>
           </td>
         <% end %>
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-        <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> 4. Custo variável</th>
+        <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          4. <%=t('activerecord.attributes.invoicing.variable_cost')%>
+        </th>
         <% (1..12).each do |month| %>
-          <% formatted_month = "#{@year}-#{meses_pt[month - 1]}" %>
+          <% formatted_month = "#{@year}-#{month_en[month - 1]}" %>
           <td class="text-center release_description px-6 py-4">
             <%= number_to_currency(@variable_costs[formatted_month], unit: "R$ ", separator: ",", delimiter: ".") || "-" %>
           </td>
         <% end %>
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-        <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> 5. Custo operacional</th>
+        <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          5. <%=t('activerecord.attributes.invoicing.operating_cost')%>
+        </th>
         <% (1..12).each do |month| %>
-          <% formatted_month = "#{@year}-#{meses_pt[month - 1]}" %>
+          <% formatted_month = "#{@year}-#{month_en[month - 1]}" %>
           <td class="text-center release_description px-6 py-4">
             <%= number_to_currency(@operational_costs[formatted_month], unit: "R$ ", separator: ",", delimiter: ".") || "-" %>
           </td>
         <% end %>
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-        <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> 6. Custo adcional</th>
+        <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          6. <%=t('activerecord.attributes.invoicing.additional_cost')%>
+        </th>
         <% (1..12).each do |month| %>
-          <% formatted_month = "#{@year}-#{meses_pt[month - 1]}" %>
+          <% formatted_month = "#{@year}-#{month_en[month - 1]}" %>
           <td class="text-center release_description px-6 py-4">
             <%= number_to_currency(@additional_charges[formatted_month], unit: "R$ ", separator: ",", delimiter: ".") || "-" %>
           </td>
         <% end %>
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-        <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> 7. Lucro</th>
+        <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          7. <%=t('activerecord.attributes.invoicing.profit')%>
+        </th>
         <% (1..12).each do |month| %>
-          <% formatted_month = "#{@year}-#{meses_pt[month - 1]}" %>
+          <% formatted_month = "#{@year}-#{month_en[month - 1]}" %>
           <td class="text-center release_description px-6 py-4">
-            <%= number_to_currency(@profit[formatted_month], separator: ",", delimiter: ".") || "-" %>
+            <%= number_to_currency(@profit[formatted_month],  unit: "R$ ", separator: ",", delimiter: ".") || "-" %>
           </td>
         <% end %>
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-        <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> 8. Saldo final</th>
+        <th scope="row" class="lauch_date px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          8. <%=t('activerecord.attributes.invoicing.closing_balance')%>
+        </th>
         <% (1..12).each do |month| %>
-          <% formatted_month = "#{@year}-#{meses_pt[month - 1]}" %>
+          <% formatted_month = "#{@year}-#{month_en[month - 1]}" %>
           <td class="text-center release_description px-6 py-4">
             <%= @end_balance[formatted_month].to_f.zero? ? "-" : number_to_currency(@end_balance[formatted_month], unit: "R$ ", separator: ",", delimiter: ".") %>
           </td>

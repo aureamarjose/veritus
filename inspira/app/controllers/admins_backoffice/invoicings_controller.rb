@@ -26,10 +26,12 @@ module AdminsBackoffice
       end_date = Date.new(@year, 12, 31)
 
       # Valor Recebido agrupado por mês
-      @received = Received.where(lauch_date: start_date..end_date).group_by_month(
+      I18n.with_locale(:en) do
+        @received = Received.where(lauch_date: start_date..end_date).group_by_month(
         :lauch_date,
         format: "%Y-%b",
       ).sum(:lauch_value)
+      end
 
       # Valor anual
       @received_year = Received.where(lauch_date: start_date..end_date).sum(:lauch_value)
@@ -133,25 +135,28 @@ module AdminsBackoffice
       @profit = {}
 
       # Iterar sobre cada chave em costs
-      costs.each do |key, cost_value|
-        received = @received[key].to_f
-        cost = cost_value.to_f
+        I18n.with_locale(:en) do
+        costs.each do |key, cost_value|
+          received = @received[key].to_f
+          cost = cost_value.to_f
 
-        @profit[key] = if received.zero? && cost > 0
-          -cost
-        else
-          received - cost
+          @profit[key] = if received.zero? && cost > 0
+            -cost
+          else
+            received - cost
+          end
         end
       end
 
       # lucro líquido anual
       @profit_year = @received_year.to_f - @costs_year.to_f
+
       previous_year
 
       # Saldo Final
       # Inicializar o saldo final com o valor de janeiro
       end_balance = {}
-      months = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
+      months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
       previous_balance = @previous_balance.to_f
 
       # Calcular o saldo final para cada mês
@@ -169,7 +174,7 @@ module AdminsBackoffice
       previous_balance_2 = @previous_balance.to_f
 
       # Definir o saldo inicial para janeiro
-      initial_balance["#{@year}-jan"] = previous_balance_2
+      initial_balance["#{@year}-Jan"] = previous_balance_2
 
       # Calcular o saldo inicial para os meses subsequentes
       months[1..-1].each_with_index do |month, index|
