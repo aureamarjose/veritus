@@ -3,18 +3,18 @@
     <ul class="flex flex-wrap -mb-px">
       <li class="me-2">
         <%= link_to admins_backoffice_cash_flows_path, id:"link1", data: {turbo_stream: true, action:"cashFlow--tabs#showForm", "cashFlow--tabs-target":"link", turbo_action:"advance"}, class: "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" do %>
-        Todos os Registros |
+          <%=t('activerecord.attributes.cash_flow.all_records')%> |
         <% end %>
 
       </li>
       <li class="me-2">
         <%= link_to received_admins_backoffice_cash_flows_path, id:"link2", data: {turbo_stream: true, action:"cashFlow--tabs#showForm", "cashFlow--tabs-target":"link", turbo_action:"advance"}, class: "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" do %>
-        Recebimentos |
+          <%=t('activerecord.attributes.cash_flow.receipts')%> |
         <% end %>
       </li>
       <li class="me-2">
         <%= link_to new_admins_backoffice_cash_flow_path, id:"link3", data: {turbo_stream: true,  action:"cashFlow--tabs#showForm", "cashFlow--tabs-target":"link"}, class: "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" do %>
-        Adcionar Saldo
+          <%=t('activerecord.attributes.cash_flow.add_balance')%>
         <% end %>
       </li>
     </ul>

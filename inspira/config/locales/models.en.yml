@@ -270,6 +270,37 @@ en:
             one:  Overdue by %{count} day
             other: Overdue by %{count} days
           due_today: Due today
+      cash_flow:
+        cash_flow: Cash Flow
+        all_records: All Records
+        receipts: Receipts
+        add_balance: Add Balance
+        search_period: Search by period
+        date: Date
+        entry: Entry
+        description: Description
+        entry_type: Entry Type
+        amount: Amount
+        balance: Balance
+        no_records: No records
+        today: Today
+        yesterday: Yesterday
+        this: This
+        this_month: This month
+        this_year: This Year
+        last: Last
+        last_month: Last month
+        last_year: Last year
+        last_six_month: Last six month
+        edit_filter: Edit filter
+        clear_filter: Clear filter
+        transaction_date: Transaction date
+        transaction_type: Transaction type
+        income: Income
+        expense: Expense
+        balance_added: Balance added
+        filter: Filter
+        clear: Clear
       invoicing:
         revenue: Revenue
         services: Services

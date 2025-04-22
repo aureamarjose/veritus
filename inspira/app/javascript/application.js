@@ -8,8 +8,8 @@ import "Chart.bundle"
 
 // Importações do flatpickr
 import flatpickr from "flatpickr";
-import { Portuguese } from "./pt.js";
+import { English } from "./en.js";
 
 // Configura o flatpickr para usar a tradução em português globalmente
-flatpickr.localize(Portuguese);
+flatpickr.localize(English);
 
