@@ -4,17 +4,17 @@ namespace :dev do
   desc "Create BD"
   task setup: :environment do
     #if Rails.env.development?
-      show_spinner("Apagando Banco de Dados ...") do
-        %x(rails db:drop)
-      end
+      # show_spinner("Apagando Banco de Dados ...") do
+      #   %x(rails db:drop)
+      # end
 
-      show_spinner("Criando Banco de Dados ...") do
-        %x(rails db:create)
-      end
+      # show_spinner("Criando Banco de Dados ...") do
+      #   %x(rails db:create)
+      # end
 
-      show_spinner("Migrando Banco de Dados ...") do
-        %x(rails db:migrate)
-      end
+      # show_spinner("Migrando Banco de Dados ...") do
+      #   %x(rails db:migrate)
+      # end
 
       %x(rails db:seed)
 
