@@ -89,4 +89,5 @@ Rails.application.configure do
   config.assets.compile = true
   config.assets.check_precompiled_asset = false
   config.hosts << "veritus.ajsystemdevelopment.com"
+  config.hosts << "82.25.92.226"
 end
