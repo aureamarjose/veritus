@@ -2,7 +2,7 @@
 
 namespace :dev do
   desc "Create BD"
-  task setup: :environment do
+  #task setup: :environment do
     if Rails.env.development?
       show_spinner("Apagando Banco de Dados ...") do
         %x(rails db:drop)
@@ -23,7 +23,7 @@ namespace :dev do
       %x(rake dev_service:create_service)
       %x(rake dev_bills_to_pay:create_bills_to_pay)
     end
-  end
+  #end
 
   private
 
