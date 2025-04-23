@@ -99,7 +99,7 @@ Rails.application.configure do
   #
   # Configuração de hosts permitidos
   config.hosts.clear # Limpa configurações anteriores
-  config.hosts << "inspira.ajsystemdevelopment.com"
+  config.hosts << "veritus.ajsystemdevelopment.com"
   #config.hosts << "69.62.102.137"
 
   config.host_authorization = { exclude: ->(request) { true } } # Desabilita temporariamente a verificação

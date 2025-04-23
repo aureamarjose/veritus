@@ -33,8 +33,8 @@ en:
         one: Categoria de Conta a Pagar
         other: Categorias de Contas a Pagar
       cash_flow:
-        one: Fluxo de Caixa
-        other: Fluxos de Caixa
+        one: Cash Flow
+        other: Cash Flows
       list_service:
         one: Service
         other:  Services
@@ -271,6 +271,10 @@ en:
             other: Overdue by %{count} days
           due_today: Due today
       cash_flow:
+        lauch_date: Date
+        lauch_value: Amount
+        lauch_description: Description
+        add_cash: Add cash to the register
         cash_flow: Cash Flow
         all_records: All Records
         receipts: Receipts
@@ -300,7 +304,10 @@ en:
         expense: Expense
         balance_added: Balance added
         filter: Filter
-        clear: Clear
+        clear: Clea
+        message:
+          success_create: Cash successfully added to the register.
+          success_delete: Balance removed successfully.
       invoicing:
         revenue: Revenue
         services: Services

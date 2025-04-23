@@ -61,7 +61,7 @@ module AdminsBackoffice
       respond_to do |format|
         if @cash_flow.save
           format.html do
-            redirect_to(admins_backoffice_cash_flows_path, notice: "Saldo adcionado ao caixa com sucesso.")
+            redirect_to(admins_backoffice_cash_flows_path, notice: t('activerecord.attributes.cash_flow.message.success_create'))
           end
         else
           format.html { render("cash_flows/new", status: :unprocessable_entity) }

@@ -91,7 +91,7 @@ export default class extends Controller {
         else if (this.origin == "cash_flow") {
           Turbo.renderStreamMessage(data);
           Toastify({
-            text: "Saldo excluído com sucesso.",
+            text: window.translations.messageSuccessDeleteBalance,
             duration: 3000,
             style: {
               background: "#22c55e",
